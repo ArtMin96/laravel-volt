@@ -30,6 +30,8 @@ Route::group(
 
         Route::middleware('auth:admin')->group(function () {
             Route::get('dashboard', Dashboard::class)->name('dashboard');
+
+            Route::get('profile')->name('profile');
         });
     });
 
