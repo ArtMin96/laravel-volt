@@ -23,6 +23,14 @@ class Sidebar extends Component
                 ]
             ],
             [
+                'route' => 'user',
+                'name' => trans('admin/sidebar.user_management'),
+                'icon' => [
+                    'type' => 'icon',
+                    'icon' => 'fas fa-users'
+                ]
+            ],
+            [
                 'name' => trans('admin/sidebar.roles_permissions'),
                 'icon' => [
                     'type' => 'icon',
@@ -30,14 +38,12 @@ class Sidebar extends Component
                 ],
                 'child' => [
                     [
-                        'route' => 'dashboard',
+                        'route' => 'role',
                         'name' => trans('admin/sidebar.roles'),
-                        'icon' => 'dashboard',
                     ],
                     [
-                        'route' => 'dashboard',
+                        'route' => 'permission',
                         'name' => trans('admin/sidebar.permissions'),
-                        'icon' => 'dashboard',
                     ]
                 ]
             ]

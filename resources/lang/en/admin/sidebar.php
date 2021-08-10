@@ -10,6 +10,7 @@ return [
     */
 
     'dashboard' => 'Dashboard',
+    'user_management' => 'User management',
     'roles_permissions' => 'Roles &amp; Permissions',
     'roles' => 'Roles',
     'permissions' => 'Permissions',

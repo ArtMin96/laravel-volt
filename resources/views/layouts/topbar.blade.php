@@ -145,6 +145,30 @@
           </div>
         </li>
 
+          <!-- Localization dropdown -->
+          <x-admin.dropdown dropdownClasses="nav-item ms-lg-3" dropdownButtonClasses="nav-link pt-1 px-0" showToggleIcon="true" contentClasses="dashboard-dropdown dropdown-menu-end mt-2 py-1">
+              <x-slot name="triggerContent">
+                  <div class="media d-flex align-items-center">
+                      <x-dynamic-component :component="'flags.'.getCurrentLocale()" class="icon icon-sm" />
+                      <div class="media-body ms-2 text-dark align-items-center d-none d-lg-block">
+                          <span class="mb-0 font-small fw-bold text-gray-900">{{ \Illuminate\Support\Str::ucfirst(getCurrentLocaleName()) }}</span>
+                      </div>
+                  </div>
+              </x-slot>
+
+              <x-slot name="content">
+
+                  @foreach(getSupportedLocales() as $localeCode => $properties)
+                      <x-admin.dropdown-item rel="alternate" hreflang="{{ $localeCode }}"  route="{{ getLocalizedURL($localeCode) }}" class="d-flex align-items-center">
+                          <x-dynamic-component :component="'flags.'.$localeCode" class="dropdown-icon me-2" />
+                          {{ \Illuminate\Support\Str::ucfirst($properties['native']) }}
+                      </x-admin.dropdown-item>
+                  @endforeach
+
+              </x-slot>
+          </x-admin.dropdown>
+
+          <!-- Authentication dropdown -->
           <x-admin.dropdown dropdownClasses="nav-item ms-lg-3" dropdownButtonClasses="nav-link pt-1 px-0" showToggleIcon="true" contentClasses="dashboard-dropdown dropdown-menu-end mt-2 py-1">
               <x-slot name="triggerContent">
                   <div class="media d-flex align-items-center">
@@ -156,14 +180,24 @@
               </x-slot>
 
               <x-slot name="content">
-                  <x-admin.dropdown-item route="{{ route('admin.profile') }}" class="d-flex align-items-center">
-
+                  <x-admin.dropdown-item route="{{ localizeURL(route('admin.profile')) }}" class="d-flex align-items-center">
+                      <x-admin.icons.navbar.user class="dropdown-icon text-gray-400 me-2" />
                       My Profile
                   </x-admin.dropdown-item>
+
                   <x-admin.dropdown-divider></x-admin.dropdown-divider>
-                  <x-admin.dropdown-item class="d-flex align-items-center">
-                      <livewire:logout />
-                  </x-admin.dropdown-item>
+
+                  <!-- Authentication -->
+                  <form action="{{ route('admin.logout') }}" method="POST">
+                      @csrf
+
+                      <x-admin.dropdown-item class="d-flex align-items-center"
+                                             onclick="event.preventDefault();
+                                                this.closest('form').submit();">
+                          <x-admin.icons.navbar.logout class="dropdown-icon text-danger me-2" />
+                          {{ __('Logout') }}
+                      </x-admin.dropdown-item>
+                  </form>
               </x-slot>
           </x-admin.dropdown>
       </ul>

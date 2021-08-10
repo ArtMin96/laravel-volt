@@ -4,18 +4,23 @@ namespace App\Http\Livewire\Admin\Auth;
 
 use App\Models\Admin\Permission;
 use App\Models\Admin\Role;
+use App\Traits\Admin\GuardsAgainstAccess;
 use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
 
 class Login extends Component
 {
-    /** @var string  */
-    public $email = '';
+    use GuardsAgainstAccess;
+
+    protected string $guard = 'admin';
 
     /** @var string  */
-    public $password = '';
+    public string $email = '';
 
-    protected $rules = [
+    /** @var string  */
+    public string $password = '';
+
+    protected array $rules = [
         'email' => ['required', 'email'],
         'password' => ['required'],
     ];
