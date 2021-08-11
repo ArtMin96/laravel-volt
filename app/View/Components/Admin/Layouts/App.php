@@ -13,6 +13,6 @@ class App extends Component
      */
     public function render()
     {
-        return view('admin.layouts.app');
+        return view('layouts.admin.app');
     }
 }

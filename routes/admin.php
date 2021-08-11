@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\Auth\LogoutController;
 use App\Http\Controllers\Admin\PermissionController;
 use App\Http\Controllers\Admin\RoleController;
@@ -39,8 +40,11 @@ Route::group(
 
             Route::post('logout', LogoutController::class)->name('logout');
 
+            // Admin user management routes
+            Route::get('admins', [AdminController::class, 'index'])->name('admins');
+
             // User management routes
-            Route::get('user', [UserController::class, 'index'])->name('user');
+            Route::get('users', [UserController::class, 'index'])->name('user');
 
             // Role management routes
             Route::get('role', [RoleController::class, 'index'])->name('role');

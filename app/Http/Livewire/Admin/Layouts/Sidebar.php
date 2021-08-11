@@ -23,11 +23,20 @@ class Sidebar extends Component
                 ]
             ],
             [
-                'route' => 'user',
                 'name' => trans('admin/sidebar.user_management'),
                 'icon' => [
                     'type' => 'icon',
                     'icon' => 'fas fa-users'
+                ],
+                'child' => [
+                    [
+                        'route' => 'user',
+                        'name' => trans('admin/sidebar.users'),
+                    ],
+                    [
+                        'route' => 'admins',
+                        'name' => trans('admin/sidebar.admins'),
+                    ]
                 ]
             ],
             [
