@@ -13,6 +13,7 @@
         "laravel/tinker": "^2.5",
         "livewire/livewire": "^2.4",
         "mcamara/laravel-localization": "^1.6",
+        "rappasoft/laravel-livewire-tables": "^1.12",
         "spatie/laravel-permission": "^4.2",
         "spatie/laravel-translatable": "^5.0"
     },
