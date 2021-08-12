@@ -44,14 +44,11 @@ class AdminsTable extends DataTableComponent
     {
         return [
             Column::make('First name', 'first_name')
-                ->sortable()
-                ->excludeFromSelectable(),
+                ->sortable(),
             Column::make('Last name', 'last_name')
-                ->sortable()
-                ->excludeFromSelectable(),
+                ->sortable(),
             Column::make('E-mail', 'email')
-                ->sortable()
-                ->excludeFromSelectable(),
+                ->sortable(),
         ];
     }
 

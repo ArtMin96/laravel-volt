@@ -42,12 +42,14 @@ Route::group(
 
             // Admin user management routes
             Route::get('admins', [AdminController::class, 'index'])->name('admins');
+            Route::get('admins/create', [AdminController::class, 'create'])->name('admins.create');
 
             // User management routes
             Route::get('users', [UserController::class, 'index'])->name('user');
 
             // Role management routes
-            Route::get('role', [RoleController::class, 'index'])->name('role');
+            Route::get('roles', [RoleController::class, 'index'])->name('roles');
+            Route::get('roles/create', [RoleController::class, 'create'])->name('roles.create');
 
             // Permission management routes
             Route::get('permission', [PermissionController::class, 'index'])->name('permission');

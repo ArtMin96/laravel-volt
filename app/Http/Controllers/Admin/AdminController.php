@@ -2,10 +2,14 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Models\Admin\Role;
 use App\Repository\Admin\AdminRepositoryInterface;
+use App\Traits\Admin\Authorizable;
 
 class AdminController extends Controller
 {
+    use Authorizable;
+
     private AdminRepositoryInterface $adminRepository;
 
     /**
@@ -18,8 +22,13 @@ class AdminController extends Controller
 
     public function index()
     {
-        $admins = $this->adminRepository->all();
+        return view('admin.admins.index');
+    }
 
-        return view('admin.admins.index', compact('admins'));
+    public function create()
+    {
+        $roles = Role::pluck('name', 'id');
+
+        return view('admin.admins.create', compact('roles'));
     }
 }

@@ -55,6 +55,43 @@ class Permission extends BasePermission
                     'hy' => 'Ջնջել դերերը',
                 ],
                 'guard_name' => 'admin'
+            ],
+
+            [
+                'name' => 'add_admins',
+                'display_name' => [
+                    'en' => 'Create admin users',
+                    'ru' => 'Создать администратор пользователи',
+                    'hy' => 'Ստեղծել ադմինիստրատոր օգտատեր',
+                ],
+                'guard_name' => 'admin'
+            ],
+            [
+                'name' => 'view_admins',
+                'display_name' => [
+                    'en' => 'View admin users',
+                    'ru' => 'Посмотреть администратор пользователи',
+                    'hy' => 'Դիտել ադմինիստրատոր օգտատերերին',
+                ],
+                'guard_name' => 'admin'
+            ],
+            [
+                'name' => 'edit_admins',
+                'display_name' => [
+                    'en' => 'Edit admin users',
+                    'ru' => 'Изменить администратор пользователи',
+                    'hy' => 'Խմբագրել ադմինիստրատոր օգտատերերին',
+                ],
+                'guard_name' => 'admin'
+            ],
+            [
+                'name' => 'delete_admins',
+                'display_name' => [
+                    'en' => 'Delete admin users',
+                    'ru' => 'Удалить администратор пользователи',
+                    'hy' => 'Ջնջել ադմինիստրատոր օգտատեր',
+                ],
+                'guard_name' => 'admin'
             ]
         ];
     }

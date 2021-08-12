@@ -7,7 +7,7 @@
                 @if ($key !== 'search' && strlen($value))
                     <span
                         wire:key="filter-pill-{{ $key }}"
-                        class="badge rounded-pill bg-info d-inline-flex align-items-center"
+                        class="badge rounded-pill bg-gray-800 d-inline-flex align-items-center px-2 py-1"
                     >
                         {{ $filterNames[$key] ?? collect($this->columns())->pluck('text', 'column')->get($key, ucwords(strtr($key, ['_' => ' ', '-' => ' ']))) }}:
                         @if(isset($customFilters[$key]) && method_exists($customFilters[$key], 'options'))

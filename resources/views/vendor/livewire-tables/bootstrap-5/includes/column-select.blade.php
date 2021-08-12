@@ -25,13 +25,14 @@
                 @foreach($columns as $column)
                     @if ($column->isVisible() && $column->isSelectable())
                         <div wire:key="columnSelect-{{ $loop->index }}">
-                            <label class="px-2 {{ $loop->last ? 'mb-0' : 'mb-1' }}">
+                            <label class="px-2 py-1 w-100 {{ $loop->last ? 'mb-0' : 'mb-1' }}">
                                 <input
                                     wire:model="columnSelectEnabled"
                                     wire:target="columnSelectEnabled"
                                     wire:loading.attr="disabled"
                                     type="checkbox"
                                     value="{{ $column->column() }}"
+                                    class="form-check-input"
                                 />
                                 <span class="ml-2">{{ $column->text() }}</span>
                             </label>

@@ -47,7 +47,7 @@ class Sidebar extends Component
                 ],
                 'child' => [
                     [
-                        'route' => 'role',
+                        'route' => 'roles',
                         'name' => trans('admin/sidebar.roles'),
                     ],
                     [
