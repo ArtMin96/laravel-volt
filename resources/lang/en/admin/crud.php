@@ -41,4 +41,13 @@ return [
         ],
     ],
 
+    'admins' => [
+        'page_title' => 'Admins List',
+        'page_caption' => 'Your web analytics dashboard template.',
+        'create_button' => 'New User',
+        'edit_role' => 'Edit user',
+        'delete_role' => 'Delete user',
+        'back' => 'Back',
+    ],
+
 ];

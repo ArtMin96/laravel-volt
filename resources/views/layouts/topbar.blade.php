@@ -172,9 +172,9 @@
           <x-admin.dropdown dropdownClasses="nav-item ms-lg-3" dropdownButtonClasses="nav-link pt-1 px-0" showToggleIcon="true" contentClasses="dashboard-dropdown dropdown-menu-end mt-2 py-1">
               <x-slot name="triggerContent">
                   <div class="media d-flex align-items-center">
-                      <img class="avatar rounded-circle" alt="Image placeholder" src="/assets/img/team/profile-picture-1.jpg">
+                      <img class="avatar rounded-circle" alt="{{ admin()->fullName }}" src="{{ admin()->profile_photo_url }}">
                       <div class="media-body ms-2 text-dark align-items-center d-none d-lg-block">
-                            <span class="mb-0 font-small fw-bold text-gray-900">{{  auth()->user()->first_name ? auth()->user()->first_name . ' ' . auth()->user()->last_name : 'User Name'}}</span>
+                            <span class="mb-0 font-small fw-bold text-gray-900">{{  admin()->fullName ? admin()->fullName : 'User Name'}}</span>
                       </div>
                   </div>
               </x-slot>

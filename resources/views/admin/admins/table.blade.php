@@ -1,17 +1,25 @@
 <x-livewire-tables::table.cell>
-    <p class="text-blue-400 truncate">
-        {{ $row->first_name }}
-    </p>
+    <div>{{ $row->first_name }}</div>
 </x-livewire-tables::table.cell>
 
 <x-livewire-tables::table.cell>
-    <p class="text-blue-400 truncate">
-        {{ $row->last_name }}
-    </p>
+    <div>{{ $row->last_name }}</div>
 </x-livewire-tables::table.cell>
 
 <x-livewire-tables::table.cell>
-    <p class="text-blue-400 truncate">
-        <a href="mailto:{{ $row->email }}" class="hover:underline">{{ $row->email }}</a>
-    </p>
+    <div><a href="mailto:{{ $row->email }}" class="hover:underline">{{ $row->email }}</a></div>
 </x-livewire-tables::table.cell>
+
+<x-livewire-tables::table.cell>
+    <div>
+        @if ($row->email_verified_at)
+            Yes
+        @else
+            No
+        @endif
+    </div>
+</x-livewire-tables::table.cell>
+
+{{--<x-livewire-tables::table.cell>--}}
+{{--    <a href="#" wire:click.prevent="manage({{ $row->id }})" class="text-primary-600 font-medium hover:text-primary-900">Manage</a>--}}
+{{--</x-livewire-tables::table.cell>--}}

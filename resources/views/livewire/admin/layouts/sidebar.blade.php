@@ -4,7 +4,7 @@
         <div class="user-card d-flex d-md-none align-items-center justify-content-between justify-content-md-center pb-4">
             <div class="d-flex align-items-center">
                 <div class="avatar-lg me-4">
-                    <img src="/assets/img/team/profile-picture-3.jpg" class="card-img-top rounded-circle border-white" alt="Bonnie Green">
+                    <img src="{{ admin()->profile_photo_url }}" class="card-img-top rounded-circle border-white" alt="{{ admin()->fullName }}">
                 </div>
                 <div class="d-block">
                     <h2 class="h5 mb-3">Hi, {{ admin()->first_name }}</h2>
@@ -24,7 +24,7 @@
         <ul class="nav flex-column pt-3 pt-md-0">
 
             <x-admin.application-sidebar-logo />
-            
+
             @forelse($items as $item)
                 @if(!isset($item['child']))
                     <livewire:admin.layouts.sidebar-item :key="$item['name']" :item="$item" />

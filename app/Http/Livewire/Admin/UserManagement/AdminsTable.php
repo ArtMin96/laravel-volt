@@ -49,13 +49,20 @@ class AdminsTable extends DataTableComponent
                 ->sortable(),
             Column::make('E-mail', 'email')
                 ->sortable(),
+            Column::make('Verified', 'email_verified_at')
+                ->sortable(),
+            Column::make('Actions')
+                ->format(function ($value, $column, $row) {
+                    return view('admin.admins.actions')->with($row);
+                })
         ];
     }
 
-    public function query()
+    public function query(): Builder
     {
         return Admin::query()
-            ->when($this->getFilter('search'), fn($query, $search) => $query->search($search));
+            ->when($this->getFilter('search'), fn($query, $search) => $query->search($search))
+            ->when($this->getFilter('verified'), fn ($query, $verified) => $verified === 'yes' ? $query->whereNotNull('email_verified_at') : $query->whereNull('email_verified_at'));
     }
 
     public function rowView(): string

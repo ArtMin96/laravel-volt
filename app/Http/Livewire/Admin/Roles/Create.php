@@ -4,18 +4,21 @@ namespace App\Http\Livewire\Admin\Roles;
 
 use App\Models\Admin\Permission;
 use App\Models\Admin\Role;
+use App\Traits\Admin\GuardsAgainstAccess;
 use Livewire\Component;
 
 class Create extends Component
 {
+    use GuardsAgainstAccess;
+
+    /** @var string $guard */
+    protected string $guard = 'admin';
+
     /** @var string $name */
     public string $name = '';
 
     /** @var string $guard_name */
     public string $guardName = 'web';
-
-    /** @var array $display_name */
-    public array $display_name = [];
 
     /** @var bool $selectAllPermissions */
     public bool $selectAllPermissions = false;
@@ -26,8 +29,10 @@ class Create extends Component
     /** @var array $permissions */
     public $permissions = [];
 
+    /** @var Role|null $role */
     public ?Role $role = null;
 
+    /** @var array $inputs */
     public array $inputs = [];
 
     /**
@@ -135,7 +140,6 @@ class Create extends Component
                 session()->flash('danger', __('admin/crud.roles.create.messages.exists', ['name' => $this->name]));
             }
         } else {
-//            dd($this->buildTranslatedFields());
             $role = Role::findByName($this->name, $this->guardName);
 
             $role->update([
