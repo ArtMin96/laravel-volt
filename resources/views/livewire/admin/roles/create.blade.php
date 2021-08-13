@@ -24,8 +24,8 @@
             @foreach(getSupportedLocales() as $localeCode => $properties)
                 <div class="col-md-4 mb-3">
                     <div>
-                        <label for="display_name">{{ __('admin/form.roles.role_display_name', ['language' => $properties['native']]) }}</label>
-                        <textarea wire:model.lazy="inputs.{{ $localeCode }}.display_name" class="form-control " id="display_name" placeholder="{{ __('admin/form.roles.role_display_name_placeholder') }}" required="" spellcheck="false"></textarea>
+                        <label for="display_name_{{ $localeCode }}">{{ __('admin/form.roles.role_display_name', ['language' => $properties['native']]) }}</label>
+                        <textarea wire:model.lazy="inputs.{{ $localeCode }}.display_name" class="form-control " id="display_name_{{ $localeCode }}" placeholder="{{ __('admin/form.roles.role_display_name_placeholder') }}" required="" spellcheck="false"></textarea>
                     </div>
                 </div>
             @endforeach

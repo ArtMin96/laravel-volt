@@ -50,7 +50,7 @@ class RolesAndPermissionsSeeder extends Seeder
             foreach($rolesArray as $role) {
                 $role = Role::create([
                     'name' => trim($role),
-                    'display_name' => collect(LaravelLocalization::getSupportedLanguagesKeys())->map(function ($locale) use ($role) {
+                    'display_name' => collect(getSupportedLanguagesKeys())->map(function ($locale) use ($role) {
                         return [$locale => $role];
                     }),
                     'guard_name' => 'admin'
