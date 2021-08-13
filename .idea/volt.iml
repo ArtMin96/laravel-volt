@@ -124,6 +124,7 @@
       <excludeFolder url="file://$MODULE_DIR$/vendor/mcamara/laravel-localization" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/symfony/polyfill-php81" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/rappasoft/laravel-livewire-tables" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/blade-ui-kit/blade-icons" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />

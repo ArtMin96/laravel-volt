@@ -119,9 +119,10 @@
       <path value="$PROJECT_DIR$/vendor/mcamara/laravel-localization" />
       <path value="$PROJECT_DIR$/vendor/symfony/polyfill-php81" />
       <path value="$PROJECT_DIR$/vendor/rappasoft/laravel-livewire-tables" />
+      <path value="$PROJECT_DIR$/vendor/blade-ui-kit/blade-icons" />
     </include_path>
   </component>
-  <component name="PhpProjectSharedConfiguration" php_language_level="7.4">
+  <component name="PhpProjectSharedConfiguration" php_language_level="8.0">
     <option name="suggestChangeDefaultLanguageLevel" value="false" />
   </component>
   <component name="PhpUnit">

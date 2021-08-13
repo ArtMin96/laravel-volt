@@ -1,6 +1,6 @@
 <x-admin.layouts.app>
 
-    <x-admin.page-heading title="Role Management" caption="Your role management dashboard template.">
+    <x-admin.page-heading title="{{ __('admin/crud.roles.page_title') }}" caption="{{ __('admin/crud.roles.page_caption') }}">
 
         @can('add_roles')
             <x-slot name="toolbar">
@@ -10,7 +10,7 @@
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6">
                         </path>
                     </svg>
-                    New Role
+                    {{ __('admin/crud.roles.create_button') }}
                 </a>
             </x-slot>
         @endcan
