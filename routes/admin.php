@@ -1,10 +1,12 @@
 <?php
 
-use App\Http\Controllers\Admin\AdminController;
+use App\Http\Controllers\Admin\{
+    AdminController,
+    PermissionController,
+    RoleController,
+    UserController
+};
 use App\Http\Controllers\Admin\Auth\LogoutController;
-use App\Http\Controllers\Admin\PermissionController;
-use App\Http\Controllers\Admin\RoleController;
-use App\Http\Controllers\Admin\UserController;
 use App\Http\Livewire\Admin\Auth\Login;
 use App\Http\Livewire\Admin\Dashboard;
 use Illuminate\Support\Facades\Route;
@@ -50,6 +52,7 @@ Route::group(
             // Role management routes
             Route::get('roles', [RoleController::class, 'index'])->name('roles');
             Route::get('roles/create', [RoleController::class, 'create'])->name('roles.create');
+            Route::get('roles/edit/{id}', [RoleController::class, 'edit'])->name('roles.edit');
 
             // Permission management routes
             Route::get('permission', [PermissionController::class, 'index'])->name('permission');

@@ -25,7 +25,7 @@
                 <div class="col-md-4 mb-3">
                     <div>
                         <label for="display_name">{{ __('admin/form.roles.role_display_name', ['language' => $properties['native']]) }}</label>
-                        <textarea wire:model.lazy="display_name.{{ $localeCode }}" class="form-control " id="display_name" placeholder="{{ __('admin/form.roles.role_display_name_placeholder') }}" required="" spellcheck="false"></textarea>
+                        <textarea wire:model.lazy="inputs.{{ $localeCode }}.display_name" class="form-control " id="display_name" placeholder="{{ __('admin/form.roles.role_display_name_placeholder') }}" required="" spellcheck="false"></textarea>
                     </div>
                 </div>
             @endforeach
@@ -51,7 +51,9 @@
         @forelse($permissions as $permission)
             <div class="col-md-3">
                 <div class="form-check">
-                    <input class="form-check-input" type="checkbox" wire:model="selectedPermissions" value="{{ $permission->id }}" id="permission-{{ $permission->id }}">
+                    <input class="form-check-input" type="checkbox" wire:model="selectedPermissions" value="{{ $permission->id }}"
+                           id="permission-{{ $permission->id }}"
+                            @if($role && $role->permissions->contains($permission)) checked @endif>
                     <label class="form-check-label" for="permission-{{ $permission->id }}">
                         {{ $permission->display_name }}
                     </label>
@@ -59,7 +61,7 @@
             </div>
         @empty
             <div class="col-12">
-                <h5 class="text-center text-muted">{{ __('admin/form.roles.empty_permissions') }}</h5>
+                <h5 class="text-center text-muted">{{ __('admin/form.roles.empty_permissions', ['guard' => $guardName]) }}</h5>
             </div>
         @endforelse
     </div>

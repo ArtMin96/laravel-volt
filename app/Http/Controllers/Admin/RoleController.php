@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Models\Admin\Permission;
 use App\Models\Admin\Role;
 use App\Traits\Admin\Authorizable;
 
@@ -17,9 +16,13 @@ class RoleController extends Controller
 
     public function create()
     {
-        $roles = Role::all();
-        $permissions = Permission::all();
+        return view('admin.roles.create');
+    }
 
-        return view('admin.roles.create', compact('roles', 'permissions'));
+    public function edit($id)
+    {
+        $role = Role::findOrFail($id);
+
+        return view('admin.roles.edit', compact('role'));
     }
 }

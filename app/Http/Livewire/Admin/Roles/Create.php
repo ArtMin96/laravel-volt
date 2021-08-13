@@ -26,17 +26,34 @@ class Create extends Component
     /** @var array $permissions */
     public $permissions = [];
 
+    public ?Role $role = null;
+
+    public array $inputs = [];
+
     /**
      * @var array|\string[][]
      */
     protected array $rules = [
         'name' => ['required', 'max:255'],
         'guardName' => ['required'],
-        'display_name.*' => ['required']
+        'inputs.*.display_name' => ['required']
     ];
 
     public function mount()
     {
+        if ($this->role) {
+//            dd($this->role->getTranslations());
+            $this->guardName = $this->role->guard_name;
+            $this->name = $this->role->name;
+            $this->selectedPermissions = collect($this->role->permissions()->pluck('id'))->all();
+            dd($this->inputs);
+            foreach (getSupportedLanguagesKeys() as $locale) {
+                dd($this->display_name[$locale]);
+            }
+
+            dd($this->role->display_name);
+        }
+
         $this->permissions = $this->getPermissionsByGuard($this->guardName);
     }
 
