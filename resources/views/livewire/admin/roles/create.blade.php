@@ -1,4 +1,7 @@
 <form wire:submit.prevent="save" method="POST">
+
+    <x-admin.alert />
+
     <div class="row">
         <div class="col-md-6 mb-3">
             <div>
@@ -9,7 +12,7 @@
 
         <div class="col-md-6 mb-3">
             <label for="role">{{ __('admin/form.roles.guard') }}</label>
-            <select wire:model.defer="guard_name" class="form-select mb-0 " id="guard_name" aria-label="Role select">
+            <select wire:model.defer="guardName" wire:click="permissionsByGuard($event.target.value)" class="form-select mb-0 " id="guard_name" aria-label="Role select">
                 @foreach(listingGuards() as $guard)
                     <option value="{{ $guard }}">{{ $guard }}</option>
                 @endforeach
@@ -32,19 +35,21 @@
     <hr>
 
     <div class="d-flex align-items-center">
-        <h2 class="h5 mb-4">Permissions</h2>
+        <h2 class="h5 mb-4">{{ __('admin/form.roles.permissions') }}</h2>
 
-        <div class="form-check form-check mb-3 ms-4">
-            <input class="form-check-input" type="checkbox" wire:model="selectAllPermissions" id="select-all-permissions">
-            <label class="form-check-label" for="select-all-permissions">
-                Select All
-            </label>
-        </div>
+        @if(count($permissions) > 0)
+            <div class="form-check form-check mb-3 ms-4">
+                <input class="form-check-input" type="checkbox" wire:model="selectAllPermissions" id="select-all-permissions">
+                <label class="form-check-label" for="select-all-permissions">
+                    {{ __('admin/form.select_all') }}
+                </label>
+            </div>
+        @endif
     </div>
 
     <div class="row">
-        @foreach($permissions as $permission)
-            <div class="col-md-3 mb-3">
+        @forelse($permissions as $permission)
+            <div class="col-md-3">
                 <div class="form-check">
                     <input class="form-check-input" type="checkbox" wire:model="selectedPermissions" value="{{ $permission->id }}" id="permission-{{ $permission->id }}">
                     <label class="form-check-label" for="permission-{{ $permission->id }}">
@@ -52,7 +57,11 @@
                     </label>
                 </div>
             </div>
-        @endforeach
+        @empty
+            <div class="col-12">
+                <h5 class="text-center text-muted">{{ __('admin/form.roles.empty_permissions') }}</h5>
+            </div>
+        @endforelse
     </div>
 
     <div class="mt-3">

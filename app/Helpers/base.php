@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Admin\Role;
 use Illuminate\Support\Collection;
 
 if (! function_exists('user')) {
@@ -29,5 +30,15 @@ if (! function_exists('listingGuards')) {
     function listingGuards(): Collection
     {
         return collect(config('auth.guards'))->keys();
+    }
+}
+
+if (! function_exists('isRoleExist')) {
+
+    function isRoleExist($name, $guard_name = null): bool
+    {
+        $role = Role::where('name', $name)->where('guard_name', $guard_name)->first();
+        return collect($role)->count() > 0;
+//        return Role::findByName($name, $guard_name);
     }
 }

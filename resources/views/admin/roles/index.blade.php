@@ -17,4 +17,6 @@
 
     </x-admin.page-heading>
 
+    <x-admin.alert />
+
 </x-admin.layouts.app>

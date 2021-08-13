@@ -12,7 +12,7 @@ class Create extends Component
     public string $name = '';
 
     /** @var string $guard_name */
-    public string $guard_name = '';
+    public string $guardName = 'web';
 
     /** @var array $display_name */
     public array $display_name = [];
@@ -23,16 +23,42 @@ class Create extends Component
     /** @var array $permissions */
     public array $selectedPermissions = [];
 
+    /** @var array $permissions */
+    public $permissions = [];
+
     /**
      * @var array|\string[][]
      */
     protected array $rules = [
         'name' => ['required', 'max:255'],
-        'guard_name' => ['required'],
+        'guardName' => ['required'],
         'display_name.*' => ['required']
     ];
 
+    public function mount()
+    {
+        $this->permissions = $this->getPermissionsByGuard($this->guardName);
+    }
+
     /**
+     * Switch permissions list based on guard name.
+     *
+     * @param $value
+     */
+    public function permissionsByGuard($value)
+    {
+        if (count($this->getPermissionsByGuard($value))) {
+            $this->permissions = $this->getPermissionsByGuard($value);
+        } else {
+            $this->permissions = [];
+            $this->selectedPermissions = [];
+            $this->selectAllPermissions = false;
+        }
+    }
+
+    /**
+     * Select all permissions.
+     *
      * @param $value
      */
     public function updatedSelectAllPermissions($value)
@@ -40,26 +66,37 @@ class Create extends Component
         $this->selectedPermissions = $value ? collect(Permission::pluck('id'))->all() : [];
     }
 
+    public function getPermissionsByGuard($guard)
+    {
+        return Permission::where('guard_name', $guard)->get();
+    }
+
     public function save()
     {
         $this->validate();
 
-        $role = Role::create([
-            'name' => $this->name,
-            'display_name' => collect($this->display_name)->all(),
-            'guard_name' => $this->guard_name
-        ]);
+        if (!isRoleExist($this->name, $this->guardName)) {
+            $role = Role::create([
+                'name' => $this->name,
+                'display_name' => collect($this->display_name)->all(),
+                'guard_name' => $this->guardName
+            ]);
 
-        $role?->syncPermissions($this->selectedPermissions);
+            if (count($this->selectedPermissions) > 0) {
+                $role?->syncPermissions($this->selectedPermissions);
+            }
 
-        return redirect()
+            session()->flash('success', __('admin/crud.roles.create.messages.success'));
+            return redirect()->route('admin.roles');
+        } else {
+            session()->flash('danger', __('admin/crud.roles.create.messages.exists', ['name' => $this->name]));
+        }
     }
 
     public function render()
     {
         $roles = Role::all();
-        $permissions = Permission::all();
 
-        return view('livewire.admin.roles.create', compact('roles', 'permissions'));
+        return view('livewire.admin.roles.create', compact('roles'));
     }
 }

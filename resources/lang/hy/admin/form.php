@@ -14,8 +14,11 @@ return [
         'guard' => 'Guard',
         'role_display_name' => 'Ցուցադրման անունը :Language',
         'role_display_name_placeholder' => 'Մուտքագրեք դերի ցուցադրման անունը',
+        'permissions' => 'Թույլտվություններ',
+        'empty_permissions' => 'Թույլտվությունների ցանկը դատարկ է',
     ],
 
     'save' => 'Պահպանել',
+    'select_all' => 'Ընտրել բոլորը'
 
 ];
