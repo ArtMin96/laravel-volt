@@ -8,7 +8,7 @@
         >
             <button
                 x-on:click="open = !open"
-                class="btn dropdown-toggle d-block w-100 d-md-inline"
+                class="btn btn-white dropdown-toggle d-block w-100 d-md-inline"
                 type="button"
                 id="columnSelect"
                 aria-haspopup="true"

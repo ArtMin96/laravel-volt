@@ -4,7 +4,6 @@ namespace App\Http\Livewire\Admin\UserManagement;
 
 use App\Models\Admin;
 use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\Relations\Relation;
 use Rappasoft\LaravelLivewireTables\DataTableComponent;
 use Rappasoft\LaravelLivewireTables\Views\Column;
 use Rappasoft\LaravelLivewireTables\Views\Filter;
@@ -51,10 +50,7 @@ class AdminsTable extends DataTableComponent
                 ->sortable(),
             Column::make('Verified', 'email_verified_at')
                 ->sortable(),
-            Column::make('Actions')
-                ->format(function ($value, $column, $row) {
-                    return view('admin.admins.actions')->with($row);
-                })
+            Column::make('Actions'),
         ];
     }
 
@@ -67,6 +63,6 @@ class AdminsTable extends DataTableComponent
 
     public function rowView(): string
     {
-        return 'admin.admins.table';
+        return 'admin.admins.includes.row';
     }
 }

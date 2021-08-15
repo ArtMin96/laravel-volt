@@ -29,6 +29,23 @@
                             </div>
                         </div>
                     </div>
+
+                    <div class="row">
+                        <div class="col-md-6 form-group mb-4">
+                            <label for="password">New Password</label>
+                            <div class="input-group">
+                                <span class="input-group-text" id="basic-addon4"><span class="fas fa-unlock-alt"></span></span>
+                                <input wire:model.lazy="password" type="password" placeholder="Password" class="form-control " id="password">
+                            </div>
+                        </div>
+                        <div class="col-md-6 form-group mb-4">
+                            <label for="confirm_password">Confirm Password</label>
+                            <div class="input-group">
+                                <span class="input-group-text" id="basic-addon5"><span class="fas fa-unlock-alt"></span></span>
+                                <input wire:model.lazy="passwordConfirmation" type="password" placeholder="Confirm Password" class="form-control" id="confirm_password">
+                            </div>
+                        </div>
+                    </div>
                 </form>
             </div>
         </div>
