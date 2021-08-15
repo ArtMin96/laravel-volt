@@ -4,6 +4,7 @@ namespace App\Http\Livewire\Admin\Admins;
 
 use App\Http\Livewire\Admin\Admins\Traits\Admins;
 use App\Models\Admin;
+use Illuminate\Validation\Rules\Password;
 use Illuminate\Validation\ValidationException;
 use Livewire\Component;
 use Livewire\WithFileUploads;
@@ -32,7 +33,15 @@ class Create extends Component
     {
         return array_merge([
             'email' => ['required', 'max:255', 'email:rfc,dns'],
-            'password' => ['required', 'min:8', 'same:passwordConfirmation'],
+            'password' => [
+                'confirmed',
+                Password::min(8)
+                ->mixedCase()
+                ->letters()
+                ->numbers()
+                ->symbols()
+                ->uncompromised()
+            ],
         ], $this->rules);
     }
 
