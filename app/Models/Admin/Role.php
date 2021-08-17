@@ -9,5 +9,5 @@ class Role extends BaseRole
 {
     use HasTranslations;
 
-    public $translatable = ['display_name'];
+    public array $translatable = ['display_name'];
 }

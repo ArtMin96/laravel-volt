@@ -2,6 +2,7 @@
 
 namespace App\Models\Admin;
 
+use App\Models\Traits\Relationship\PermissionRelationship;
 use Illuminate\Support\Collection;
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 use Spatie\Permission\Models\Permission as BasePermission;
@@ -9,9 +10,10 @@ use Spatie\Translatable\HasTranslations;
 
 class Permission extends BasePermission
 {
-    use HasTranslations;
+    use HasTranslations,
+        PermissionRelationship;
 
-    public $translatable = ['display_name'];
+    public array $translatable = ['display_name'];
 
     /**
      * @return array
@@ -21,125 +23,165 @@ class Permission extends BasePermission
 
         return [
             [
-                'name' => 'view_dashboard',
-                'display_name' => [
-                    'en' => 'View dashboard',
-                    'ru' => 'Просмотр панели управления',
-                    'hy' => 'Դիտել վահանակը',
+                'name' => [
+                    'en' => 'Roles',
+                    'ru' => 'Роли',
+                    'hy' => 'Դերեր',
                 ],
-                'guard_name' => 'admin'
+
+                'permissions' => [
+                    [
+                        'name' => 'add_roles',
+                        'display_name' => [
+                            'en' => 'Create roles',
+                            'ru' => 'Создать роли',
+                            'hy' => 'Ստեղծել դերեր',
+                        ],
+                        'guard_name' => 'admin'
+                    ],
+                    [
+                        'name' => 'view_roles',
+                        'display_name' => [
+                            'en' => 'View roles',
+                            'ru' => 'Посмотреть роли',
+                            'hy' => 'Դիտել դերերը',
+                        ],
+                        'guard_name' => 'admin'
+                    ],
+                    [
+                        'name' => 'edit_roles',
+                        'display_name' => [
+                            'en' => 'Edit roles',
+                            'ru' => 'Изменить роли',
+                            'hy' => 'Խմբագրել դերերը',
+                        ],
+                        'guard_name' => 'admin'
+                    ],
+                    [
+                        'name' => 'delete_roles',
+                        'display_name' => [
+                            'en' => 'Delete roles',
+                            'ru' => 'Удалить роли',
+                            'hy' => 'Ջնջել դերերը',
+                        ],
+                        'guard_name' => 'admin'
+                    ],
+                ],
             ],
 
             [
-                'name' => 'add_roles',
-                'display_name' => [
-                    'en' => 'Create roles',
-                    'ru' => 'Создать роли',
-                    'hy' => 'Ստեղծել դերեր',
+                'name' => [
+                    'en' => 'Admins',
+                    'ru' => 'Админы',
+                    'hy' => 'Ադմինիստրատորներ',
                 ],
-                'guard_name' => 'admin'
-            ],
-            [
-                'name' => 'view_roles',
-                'display_name' => [
-                    'en' => 'View roles',
-                    'ru' => 'Посмотреть роли',
-                    'hy' => 'Դիտել դերերը',
+
+                'permissions' => [
+                    [
+                        'name' => 'add_admins',
+                        'display_name' => [
+                            'en' => 'Create admin users',
+                            'ru' => 'Создать администратор пользователи',
+                            'hy' => 'Ստեղծել ադմինիստրատոր օգտատեր',
+                        ],
+                        'guard_name' => 'admin'
+                    ],
+                    [
+                        'name' => 'view_admins',
+                        'display_name' => [
+                            'en' => 'View admin users',
+                            'ru' => 'Посмотреть администратор пользователи',
+                            'hy' => 'Դիտել ադմինիստրատոր օգտատերերին',
+                        ],
+                        'guard_name' => 'admin'
+                    ],
+                    [
+                        'name' => 'edit_admins',
+                        'display_name' => [
+                            'en' => 'Edit admin users',
+                            'ru' => 'Изменить администратор пользователи',
+                            'hy' => 'Խմբագրել ադմինիստրատոր օգտատերերին',
+                        ],
+                        'guard_name' => 'admin'
+                    ],
+                    [
+                        'name' => 'delete_admins',
+                        'display_name' => [
+                            'en' => 'Delete admin users',
+                            'ru' => 'Удалить администратор пользователи',
+                            'hy' => 'Ջնջել ադմինիստրատոր օգտատեր',
+                        ],
+                        'guard_name' => 'admin'
+                    ],
                 ],
-                'guard_name' => 'admin'
-            ],
-            [
-                'name' => 'edit_roles',
-                'display_name' => [
-                    'en' => 'Edit roles',
-                    'ru' => 'Изменить роли',
-                    'hy' => 'Խմբագրել դերերը',
-                ],
-                'guard_name' => 'admin'
-            ],
-            [
-                'name' => 'delete_roles',
-                'display_name' => [
-                    'en' => 'Delete roles',
-                    'ru' => 'Удалить роли',
-                    'hy' => 'Ջնջել դերերը',
-                ],
-                'guard_name' => 'admin'
             ],
 
             [
-                'name' => 'add_admins',
-                'display_name' => [
-                    'en' => 'Create admin users',
-                    'ru' => 'Создать администратор пользователи',
-                    'hy' => 'Ստեղծել ադմինիստրատոր օգտատեր',
+                'name' => [
+                    'en' => 'Users',
+                    'ru' => 'Пользователи',
+                    'hy' => 'Օգտվողներ',
                 ],
-                'guard_name' => 'admin'
-            ],
-            [
-                'name' => 'view_admins',
-                'display_name' => [
-                    'en' => 'View admin users',
-                    'ru' => 'Посмотреть администратор пользователи',
-                    'hy' => 'Դիտել ադմինիստրատոր օգտատերերին',
+
+                'permissions' => [
+                    [
+                        'name' => 'add_users',
+                        'display_name' => [
+                            'en' => 'Create users',
+                            'ru' => 'Создать пользователи',
+                            'hy' => 'Ստեղծել օգտատեր',
+                        ],
+                        'guard_name' => 'admin'
+                    ],
+                    [
+                        'name' => 'view_users',
+                        'display_name' => [
+                            'en' => 'View users',
+                            'ru' => 'Посмотреть пользователи',
+                            'hy' => 'Դիտել օգտատերերին',
+                        ],
+                        'guard_name' => 'admin'
+                    ],
+                    [
+                        'name' => 'edit_users',
+                        'display_name' => [
+                            'en' => 'Edit users',
+                            'ru' => 'Изменить пользователи',
+                            'hy' => 'Խմբագրել օգտատերերին',
+                        ],
+                        'guard_name' => 'admin'
+                    ],
+                    [
+                        'name' => 'delete_users',
+                        'display_name' => [
+                            'en' => 'Delete users',
+                            'ru' => 'Удалить пользователи',
+                            'hy' => 'Ջնջել օգտատեր',
+                        ],
+                        'guard_name' => 'admin'
+                    ],
                 ],
-                'guard_name' => 'admin'
-            ],
-            [
-                'name' => 'edit_admins',
-                'display_name' => [
-                    'en' => 'Edit admin users',
-                    'ru' => 'Изменить администратор пользователи',
-                    'hy' => 'Խմբագրել ադմինիստրատոր օգտատերերին',
-                ],
-                'guard_name' => 'admin'
-            ],
-            [
-                'name' => 'delete_admins',
-                'display_name' => [
-                    'en' => 'Delete admin users',
-                    'ru' => 'Удалить администратор пользователи',
-                    'hy' => 'Ջնջել ադմինիստրատոր օգտատեր',
-                ],
-                'guard_name' => 'admin'
             ],
 
             [
-                'name' => 'add_users',
-                'display_name' => [
-                    'en' => 'Create users',
-                    'ru' => 'Создать пользователи',
-                    'hy' => 'Ստեղծել օգտատեր',
+                'name' => [
+                    'en' => 'Dashboard',
+                    'ru' => 'Панель приборов',
+                    'hy' => 'Վահանակ',
                 ],
-                'guard_name' => 'admin'
+
+                'permissions' => [
+                    [
+                        'name' => 'view_dashboard',
+                        'display_name' => [
+                            'en' => 'View dashboard',
+                            'ru' => 'Просмотр панели управления',
+                            'hy' => 'Դիտել վահանակը',
+                        ],
+                        'guard_name' => 'admin'
+                    ],
+                ]
             ],
-            [
-                'name' => 'view_users',
-                'display_name' => [
-                    'en' => 'View users',
-                    'ru' => 'Посмотреть пользователи',
-                    'hy' => 'Դիտել օգտատերերին',
-                ],
-                'guard_name' => 'admin'
-            ],
-            [
-                'name' => 'edit_users',
-                'display_name' => [
-                    'en' => 'Edit users',
-                    'ru' => 'Изменить пользователи',
-                    'hy' => 'Խմբագրել օգտատերերին',
-                ],
-                'guard_name' => 'admin'
-            ],
-            [
-                'name' => 'delete_users',
-                'display_name' => [
-                    'en' => 'Delete users',
-                    'ru' => 'Удалить пользователи',
-                    'hy' => 'Ջնջել օգտատեր',
-                ],
-                'guard_name' => 'admin'
-            ]
         ];
     }
 

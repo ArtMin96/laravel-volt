@@ -48,17 +48,22 @@
     </div>
 
     <div class="row">
-        @forelse($permissions as $permission)
-            <div class="col-md-3">
-                <div class="form-check">
-                    <input class="form-check-input" type="checkbox" wire:model="selectedPermissions" value="{{ $permission->id }}"
-                           id="permission-{{ $permission->id }}"
-                            @if($role && $role->permissions->contains($permission)) checked @endif>
-                    <label class="form-check-label" for="permission-{{ $permission->id }}">
-                        {{ $permission->display_name }}
-                    </label>
+        @forelse($permissions as $key => $group)
+            @dd($permissions)
+
+            @forelse($group as $permission)
+                <div class="col-md-3">
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" wire:model="selectedPermissions" value="{{ $permission->id }}"
+                               id="permission-{{ $permission->id }}"
+                                @if($role && $role->permissions->contains($permission)) checked @endif>
+                        <label class="form-check-label" for="permission-{{ $permission->id }}">
+                            {{ $permission->display_name }}
+                        </label>
+                    </div>
                 </div>
-            </div>
+            @empty
+            @endforelse
         @empty
             <div class="col-12">
                 <h5 class="text-center text-muted">{{ __('admin/form.roles.empty_permissions', ['guard' => $guardName]) }}</h5>

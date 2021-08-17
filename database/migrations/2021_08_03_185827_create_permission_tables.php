@@ -20,19 +20,39 @@ class CreatePermissionTables extends Migration
             throw new \Exception('Error: config/permission.php not loaded. Run [php artisan config:clear] and try again.');
         }
 
-        Schema::create($tableNames['permissions'], function (Blueprint $table) {
+        Schema::create($tableNames['permissions_group'], function (Blueprint $table) {
+            $table->bigIncrements('id');
+            $table->json('name');
+            $table->timestamps();
+        });
+
+        Schema::create($tableNames['permissions'], function (Blueprint $table) use ($tableNames) {
             $table->bigIncrements('id');
             $table->string('name');       // For MySQL 8.0 use string('name', 125);
             $table->string('guard_name'); // For MySQL 8.0 use string('guard_name', 125);
+            $table->unsignedBigInteger('parent_id')->nullable();
+            $table->unsignedBigInteger('group_id')->nullable();
+            $table->json('display_name');
             $table->timestamps();
 
             $table->unique(['name', 'guard_name']);
+
+            $table->foreign('parent_id')
+                ->references('id')
+                ->on($tableNames['permissions'])
+                ->onDelete('cascade');
+
+            $table->foreign('group_id')
+                ->references('id')
+                ->on($tableNames['permissions_group'])
+                ->onDelete('cascade');
         });
 
         Schema::create($tableNames['roles'], function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('name');       // For MySQL 8.0 use string('name', 125);
             $table->string('guard_name'); // For MySQL 8.0 use string('guard_name', 125);
+            $table->json('display_name');
             $table->timestamps();
 
             $table->unique(['name', 'guard_name']);
@@ -110,5 +130,6 @@ class CreatePermissionTables extends Migration
         Schema::drop($tableNames['model_has_permissions']);
         Schema::drop($tableNames['roles']);
         Schema::drop($tableNames['permissions']);
+        Schema::drop($tableNames['permissions_group']);
     }
 }

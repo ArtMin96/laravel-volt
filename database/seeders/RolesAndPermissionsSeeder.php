@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use App\Models\Admin;
 use App\Models\Admin\Permission;
+use App\Models\Admin\PermissionsGroup;
 use App\Models\Admin\Role;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Str;
@@ -32,8 +33,21 @@ class RolesAndPermissionsSeeder extends Seeder
         // Seed the default permissions
         $permissions = Permission::defaultPermissions();
 
-        foreach ($permissions as $permission) {
-            Permission::firstOrCreate($permission);
+        foreach ($permissions as $group) {
+            $permissionGroup = PermissionsGroup::create([
+                'name' => $group['name']
+            ]);
+
+            if ($permissionGroup) {
+                foreach ($group['permissions'] as $permission) {
+                    $permission = array_merge(
+                        ['group_id' => $permissionGroup->id],
+                        $permission
+                    );
+
+                    Permission::firstOrCreate($permission);
+                }
+            }
         }
 
         $this->command->info('Default Permissions added.');
@@ -111,13 +125,13 @@ class RolesAndPermissionsSeeder extends Seeder
     }
 
     /**
-     * @param $role
+     * @param $value
      * @return array
      */
-    private function buildTranslatedFields($role): array
+    private function buildTranslatedFields($value): array
     {
-        return collect(getSupportedLanguagesKeys())->map(function ($localeCode) use ($role) {
-            return [$localeCode => $role];
+        return collect(getSupportedLanguagesKeys())->map(function ($localeCode) use ($value) {
+            return [$localeCode => $value];
         })->collapse()->all();
     }
 }

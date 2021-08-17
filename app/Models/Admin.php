@@ -6,6 +6,7 @@ use App\Models\Traits\Attribute\AdminAttribute;
 use App\Traits\Admin\HasProfilePhoto;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Spatie\Permission\Traits\HasRoles;
@@ -16,7 +17,8 @@ class Admin extends Authenticatable
         HasFactory,
         HasProfilePhoto,
         Notifiable,
-        AdminAttribute;
+        AdminAttribute,
+        SoftDeletes;
 
     /**
      * The database table used by the model.
@@ -63,5 +65,15 @@ class Admin extends Authenticatable
      */
     protected $appends = [
         'profile_photo_url',
+    ];
+
+    /**
+     * The relationships that should always be loaded.
+     *
+     * @var array
+     */
+    protected $with = [
+        'permissions',
+        'roles',
     ];
 }

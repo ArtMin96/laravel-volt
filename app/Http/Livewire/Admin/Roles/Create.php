@@ -103,7 +103,7 @@ class Create extends Component
 
     public function getPermissionsByGuard($guard)
     {
-        return Permission::where('guard_name', $guard)->get();
+        return Permission::where('guard_name', $guard)->with('group')->get()->groupBy('group.name');
     }
 
     public function buildTranslatedFields(): array
