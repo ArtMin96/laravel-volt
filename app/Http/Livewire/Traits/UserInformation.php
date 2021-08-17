@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Http\Livewire\Admin\Admins\Traits;
+namespace App\Http\Livewire\Traits;
 
-trait Admins
+trait UserInformation
 {
     protected array $rules = [
         'first_name' => ['required', 'max:255'],

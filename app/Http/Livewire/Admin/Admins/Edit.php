@@ -2,7 +2,7 @@
 
 namespace App\Http\Livewire\Admin\Admins;
 
-use App\Http\Livewire\Admin\Admins\Traits\Admins;
+use App\Http\Livewire\Traits\UserInformation;
 use App\Models\Admin;
 use Illuminate\Validation\Rule;
 use Livewire\Component;
@@ -11,7 +11,7 @@ use Livewire\WithFileUploads;
 class Edit extends Component
 {
     use WithFileUploads,
-        Admins;
+        UserInformation;
 
     public Admin $admin;
 

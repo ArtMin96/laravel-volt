@@ -21,6 +21,16 @@ class Permission extends BasePermission
 
         return [
             [
+                'name' => 'view_dashboard',
+                'display_name' => [
+                    'en' => 'View dashboard',
+                    'ru' => 'Просмотр панели управления',
+                    'hy' => 'Դիտել վահանակը',
+                ],
+                'guard_name' => 'admin'
+            ],
+
+            [
                 'name' => 'add_roles',
                 'display_name' => [
                     'en' => 'Create roles',
@@ -90,6 +100,43 @@ class Permission extends BasePermission
                     'en' => 'Delete admin users',
                     'ru' => 'Удалить администратор пользователи',
                     'hy' => 'Ջնջել ադմինիստրատոր օգտատեր',
+                ],
+                'guard_name' => 'admin'
+            ],
+
+            [
+                'name' => 'add_users',
+                'display_name' => [
+                    'en' => 'Create users',
+                    'ru' => 'Создать пользователи',
+                    'hy' => 'Ստեղծել օգտատեր',
+                ],
+                'guard_name' => 'admin'
+            ],
+            [
+                'name' => 'view_users',
+                'display_name' => [
+                    'en' => 'View users',
+                    'ru' => 'Посмотреть пользователи',
+                    'hy' => 'Դիտել օգտատերերին',
+                ],
+                'guard_name' => 'admin'
+            ],
+            [
+                'name' => 'edit_users',
+                'display_name' => [
+                    'en' => 'Edit users',
+                    'ru' => 'Изменить пользователи',
+                    'hy' => 'Խմբագրել օգտատերերին',
+                ],
+                'guard_name' => 'admin'
+            ],
+            [
+                'name' => 'delete_users',
+                'display_name' => [
+                    'en' => 'Delete users',
+                    'ru' => 'Удалить пользователи',
+                    'hy' => 'Ջնջել օգտատեր',
                 ],
                 'guard_name' => 'admin'
             ]

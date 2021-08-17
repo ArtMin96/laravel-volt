@@ -27,6 +27,7 @@ return [
         'email' => 'Email',
         'password' => 'Password',
         'confirm_password' => 'Confirm Password',
+        'role' => 'Role',
     ],
 
     'save' => 'Save',

@@ -55,9 +55,8 @@ return [
             'form_title' => 'General information',
 
             'messages' => [
-                'success' => 'Role added in your system',
-                'danger' => 'Cannot add a new role.',
-                'exists' => 'A role :Name already exists for the admin',
+                'success' => 'New user added with role :Role.',
+                'danger' => 'Cannot add a new user.',
             ],
         ],
 
@@ -67,8 +66,8 @@ return [
             'form_title' => 'General information',
 
             'messages' => [
-                'success' => 'Role updated successfully',
-                'danger' => 'Cannot update role.'
+                'success' => 'User updated successfully',
+                'danger' => 'Cannot update user.'
             ],
         ],
     ],

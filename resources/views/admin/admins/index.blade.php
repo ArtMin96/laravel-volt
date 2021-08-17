@@ -30,6 +30,8 @@
 
     </x-admin.page-heading>
 
+    <x-admin.alert />
+
     <livewire:admin.user-management.admins-table />
 
 </x-admin.layouts.app>

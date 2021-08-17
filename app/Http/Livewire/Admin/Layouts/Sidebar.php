@@ -16,6 +16,7 @@ class Sidebar extends Component
         return [
             [
                 'route' => 'dashboard',
+                'role' => '',
                 'name' => trans('admin/sidebar.dashboard'),
                 'icon' => [
                     'type' => 'svg',
@@ -23,6 +24,7 @@ class Sidebar extends Component
                 ]
             ],
             [
+                'role' => 'view_admins|view_users',
                 'name' => trans('admin/sidebar.user_management'),
                 'icon' => [
                     'type' => 'icon',
@@ -31,29 +33,23 @@ class Sidebar extends Component
                 'child' => [
                     [
                         'route' => 'user',
+                        'role' => 'view_users',
                         'name' => trans('admin/sidebar.users'),
                     ],
                     [
                         'route' => 'admins',
+                        'role' => 'view_admins',
                         'name' => trans('admin/sidebar.admins'),
                     ]
                 ]
             ],
             [
-                'name' => trans('admin/sidebar.roles_permissions'),
+                'route' => 'roles',
+                'role' => 'view_roles',
+                'name' => trans('admin/sidebar.roles'),
                 'icon' => [
                     'type' => 'icon',
                     'icon' => 'fas fa-key'
-                ],
-                'child' => [
-                    [
-                        'route' => 'roles',
-                        'name' => trans('admin/sidebar.roles'),
-                    ],
-                    [
-                        'route' => 'permission',
-                        'name' => trans('admin/sidebar.permissions'),
-                    ]
                 ]
             ]
         ];

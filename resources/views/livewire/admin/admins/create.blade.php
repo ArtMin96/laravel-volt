@@ -42,6 +42,15 @@
                 @enderror
             </div>
         </div>
+
+        <div class="col-md-6 mb-3">
+            <label for="role">{{ __('admin/form.admins.role') }}</label>
+            <select wire:model="role" class="form-select @error('role') is-invalid @enderror" id="guard_name" aria-label="{{ __('admin/form.admins.role') }}">
+                @foreach($roles as $role)
+                    <option value="{{ $role->name }}">{{ $role->display_name }}</option>
+                @endforeach
+            </select>
+        </div>
     </div>
 
     <div class="row">
@@ -61,9 +70,11 @@
         <div class="col-md-6 form-group mb-4">
             <label for="confirm_password">{{ __('admin/form.admins.confirm_password') }}</label>
             <div class="input-group">
-                <span class="input-group-text @error('first_name') is-invalid @enderror" id="basic-addon5"><span class="fas fa-unlock-alt"></span></span>
+                <span class="input-group-text" id="basic-addon5"><span class="fas fa-unlock-alt"></span></span>
                 <input wire:model.lazy="passwordConfirmation" type="password" placeholder="{{ __('admin/form.admins.confirm_password') }}" class="form-control" id="confirm_password">
             </div>
         </div>
     </div>
+
+    <button type="submit" class="btn btn-gray-800 mt-2 animate-up-2">{{ __('admin/form.save') }}</button>
 </form>

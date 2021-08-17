@@ -25,11 +25,13 @@
 
             <x-admin.application-sidebar-logo />
 
-            @forelse($items as $item)
-                @if(!isset($item['child']))
-                    <livewire:admin.layouts.sidebar-item :key="$item['name']" :item="$item" />
-                @else
-                    <livewire:admin.layouts.sidebar-accordion-item :key="$item['name']" :item="$item" />
+            @forelse($items as $key => $item)
+                @if(admin()->hasAnyPermission(givenPermissions($item['role'])))
+                    @if(!isset($item['child']))
+                        <livewire:admin.layouts.sidebar-item :key="$key" :item="$item" />
+                    @else
+                        <livewire:admin.layouts.sidebar-accordion-item :key="$key" :item="$item" />
+                    @endif
                 @endif
             @empty
             @endforelse

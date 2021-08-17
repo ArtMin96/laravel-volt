@@ -2,8 +2,10 @@
 
 namespace App\Http\Livewire\Admin\Admins;
 
-use App\Http\Livewire\Admin\Admins\Traits\Admins;
+use App\Http\Livewire\Traits\UserInformation;
 use App\Models\Admin;
+use App\Models\Admin\Role;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rules\Password;
 use Illuminate\Validation\ValidationException;
 use Livewire\Component;
@@ -12,7 +14,7 @@ use Livewire\WithFileUploads;
 class Create extends Component
 {
     use WithFileUploads,
-        Admins;
+        UserInformation;
 
     /** @var string $first_name */
     public string $first_name = '';
@@ -29,12 +31,15 @@ class Create extends Component
     /** @var string $passwordConfirmation */
     public string $passwordConfirmation = '';
 
+    public string $role = '';
+
     protected function rules(): array
     {
         return array_merge([
             'email' => ['required', 'max:255', 'email:rfc,dns'],
+            'role' => ['required', 'exists:roles,name'],
             'password' => [
-                'confirmed',
+                'same:passwordConfirmation',
                 Password::min(8)
                 ->mixedCase()
                 ->letters()
@@ -56,10 +61,33 @@ class Create extends Component
     public function updateProfileInformation()
     {
         $this->validate();
+
+        $admin = Admin::create([
+            'first_name' => $this->first_name,
+            'last_name' => $this->last_name,
+            'email' => $this->email,
+            'password' => Hash::make($this->password),
+        ]);
+
+        if ($admin) {
+
+            $admin->assignRole($this->role);
+
+            $role = Role::where('name', $this->role)->first();
+
+            session()->flash('success', __('admin/crud.admins.create.messages.success', ['role' => $role->display_name]));
+            return redirect()->route('admin.admins');
+        } else {
+            session()->flash('danger', __('admin/crud.admins.create.messages.danger'));
+        }
     }
 
     public function render()
     {
-        return view('livewire.admin.admins.create');
+        $roles = Role::all();
+
+        return view('livewire.admin.admins.create', [
+            'roles' => $roles
+        ]);
     }
 }

@@ -12,7 +12,7 @@
 
         <div class="col-md-6 mb-3">
             <label for="role">{{ __('admin/form.roles.guard') }}</label>
-            <select wire:model.defer="guardName" wire:click="permissionsByGuard($event.target.value)" class="form-select mb-0 " id="guard_name" aria-label="Role select">
+            <select wire:model.defer="guardName" wire:click="permissionsByGuard($event.target.value)" class="form-select mb-0 " id="guard_name" aria-label="{{ __('admin/form.roles.guard') }}">
                 @foreach(listingGuards() as $guard)
                     <option value="{{ $guard }}">{{ $guard }}</option>
                 @endforeach

@@ -18,6 +18,17 @@ return [
         'empty_permissions' => 'Թույլտվությունների ցանկը դատարկ է',
     ],
 
+    'admins' => [
+        'first_name' => 'Անուն',
+        'first_name_placeholder' => 'Մուտքագրեք ձեր անունը',
+        'last_name' => 'Ազգանուն',
+        'last_name_placeholder' => 'Նաև ձեր ազգանունը',
+        'email' => 'Էլ. փոստ',
+        'password' => 'Գաղտնաբառ',
+        'confirm_password' => 'Հաստատել գաղտնաբառը',
+        'role' => 'Դեր',
+    ],
+
     'save' => 'Պահպանել',
     'select_all' => 'Ընտրել բոլորը'
 

@@ -2,6 +2,8 @@
 
 use App\Models\Admin\Role;
 use Illuminate\Support\Collection;
+use Illuminate\Support\Str;
+use JetBrains\PhpStorm\Pure;
 
 if (! function_exists('user')) {
     /**
@@ -39,6 +41,18 @@ if (! function_exists('isRoleExist')) {
     {
         $role = Role::where('name', $name)->where('guard_name', $guard_name)->first();
         return collect($role)->count() > 0;
-//        return Role::findByName($name, $guard_name);
+    }
+}
+
+if (! function_exists('givenPermissions')) {
+    /**
+     * Convert role string to array by separator "|".
+     *
+     * @param $roleString
+     * @return array
+     */
+    function givenPermissions($roleString): array
+    {
+        return Str::contains($roleString, '|') ? explode('|', $roleString) : [$roleString];
     }
 }
