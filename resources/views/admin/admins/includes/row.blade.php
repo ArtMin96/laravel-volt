@@ -12,11 +12,7 @@
 
 <x-livewire-tables::table.cell>
     <div>
-        @if ($row->email_verified_at)
-            Yes
-        @else
-            No
-        @endif
+{{--        {!! $row->roles_label !!}--}}
     </div>
 </x-livewire-tables::table.cell>
 

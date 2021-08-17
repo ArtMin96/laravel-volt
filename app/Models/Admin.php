@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Models\Traits\Attribute\AdminAttribute;
 use App\Traits\Admin\HasProfilePhoto;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -14,7 +15,8 @@ class Admin extends Authenticatable
     use HasRoles,
         HasFactory,
         HasProfilePhoto,
-        Notifiable;
+        Notifiable,
+        AdminAttribute;
 
     /**
      * The database table used by the model.
@@ -22,8 +24,6 @@ class Admin extends Authenticatable
      * @var string
      */
     protected $table = 'admins';
-
-    protected $guarded = 'admin';
 
     /**
      * The attributes that are mass assignable.
@@ -64,14 +64,4 @@ class Admin extends Authenticatable
     protected $appends = [
         'profile_photo_url',
     ];
-
-    /**
-     * Get the user's full name.
-     *
-     * @return string
-     */
-    public function getFullNameAttribute(): string
-    {
-        return "{$this->first_name} {$this->last_name}";
-    }
 }

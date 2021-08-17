@@ -49,6 +49,12 @@ return [
         'delete_role' => 'Delete user',
         'back' => 'Back',
 
+        'table' => [
+            'first_name' => 'First name',
+            'last_name' => 'Last name',
+            'email' => 'E-mail',
+        ],
+
         'create' => [
             'page_title' => 'Add administrator user',
             'page_caption' => 'Your administrator user creation template.',
@@ -80,5 +86,11 @@ return [
             ],
         ]
     ],
+
+    'table' => [
+        'created_at' => 'Created at',
+        'updated_at' => 'Updated at',
+        'actions' => 'Actions',
+    ]
 
 ];

@@ -16,10 +16,6 @@ class AdminsTable extends DataTableComponent
         'email_verified_at' => 'Verified',
     ];
 
-    public array $filterNames = [
-        'verified' => 'E-mail Verified',
-    ];
-
     public array $bulkActions = [
         'exportSelected' => 'Export',
     ];
@@ -30,31 +26,30 @@ class AdminsTable extends DataTableComponent
     public function filters(): array
     {
         return [
-            'verified' => Filter::make('E-mail Verified')
-                ->select([
-                    '' => 'Any',
-                    'yes' => 'Yes',
-                    'no' => 'No',
-                ]),
+            'created_at' => Filter::make(trans('admin/crud.table.created_at'))
+                ->date(),
+            'updated_at' => Filter::make(trans('admin/crud.table.updated_at'))
+                ->date(),
         ];
     }
 
     public function columns(): array
     {
         return [
-            Column::make('First name', 'first_name')
+            Column::make(trans('admin/crud.admins.table.first_name'), 'first_name')
                 ->sortable(),
-            Column::make('Last name', 'last_name')
+            Column::make(trans('admin/crud.admins.table.last_name'), 'last_name')
                 ->sortable(),
-            Column::make('E-mail', 'email')
+            Column::make(trans('admin/crud.admins.table.email'), 'email')
                 ->sortable(),
-            Column::make('Verified', 'email_verified_at')
+            Column::make(trans('Roles')),
+            Column::make(trans('Additional Permissions')),
+
+            Column::make(trans('admin/crud.table.created_at'), 'created_at')
                 ->sortable(),
-            Column::make('Created at', 'created_at')
+            Column::make(trans('admin/crud.table.updated_at'), 'updated_at')
                 ->sortable(),
-            Column::make('Updated at', 'updated_at')
-                ->sortable(),
-            Column::make('Actions')
+            Column::make(trans('admin/crud.table.actions'))
                 ->excludeFromSelectable(),
         ];
     }
@@ -63,7 +58,9 @@ class AdminsTable extends DataTableComponent
     {
         return Admin::query()
             ->when($this->getFilter('search'), fn($query, $search) => $query->search($search))
-            ->when($this->getFilter('verified'), fn ($query, $verified) => $verified === 'yes' ? $query->whereNotNull('email_verified_at') : $query->whereNull('email_verified_at'));
+            ->when($this->getFilter('created_at'), fn($query, $search) => $query->whereDate('created_at', $search))
+            ->when($this->getFilter('updated_at'), fn($query, $search) => $query->whereDate('updated_at', $search));
+//            ->when($this->getFilter('verified'), fn ($query, $verified) => $verified === 'yes' ? $query->whereNotNull('email_verified_at') : $query->whereNull('email_verified_at'));
     }
 
     public function rowView(): string
