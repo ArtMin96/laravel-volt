@@ -2,7 +2,7 @@
 
 namespace App\Http\Livewire\Admin\Layouts;
 
-use Livewire\Component;
+use App\Http\Livewire\Admin\Component;
 
 class Sidebar extends Component
 {

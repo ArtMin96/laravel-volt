@@ -2,13 +2,13 @@
 
 namespace App\Http\Livewire\Admin\Admins;
 
+use App\Http\Livewire\Admin\Component;
 use App\Http\Livewire\Traits\UserInformation;
 use App\Models\Admin;
 use App\Models\Admin\Role;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rules\Password;
 use Illuminate\Validation\ValidationException;
-use Livewire\Component;
 use Livewire\WithFileUploads;
 
 class Create extends Component
@@ -36,7 +36,7 @@ class Create extends Component
     protected function rules(): array
     {
         return array_merge([
-            'email' => ['required', 'max:255', 'email:rfc,dns'],
+            'email' => ['required', 'max:255', 'email'],
             'role' => ['required', 'exists:roles,name'],
             'password' => [
                 'same:passwordConfirmation',
@@ -58,8 +58,10 @@ class Create extends Component
         $this->validateOnly($property);
     }
 
-    public function updateProfileInformation()
+    public function createUser()
     {
+        $this->resetErrorBag();
+
         $this->validate();
 
         $admin = Admin::create([

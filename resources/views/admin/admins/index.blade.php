@@ -32,6 +32,6 @@
 
     <x-admin.alert />
 
-    <livewire:admin.user-management.admins-table />
+    <livewire:admin.admins.admins-table />
 
 </x-admin.layouts.app>

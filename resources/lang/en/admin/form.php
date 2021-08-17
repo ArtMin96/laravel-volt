@@ -30,7 +30,18 @@ return [
         'role' => 'Role',
     ],
 
+    'update-password' => [
+        'current_password' => 'Current password',
+        'current_password_placeholder' => 'Current password',
+        'password' => 'Password',
+        'password_placeholder' => 'Password',
+        'confirm_password' => 'Confirm password',
+        'confirm_password_placeholder' => 'Confirm password',
+    ],
+
     'save' => 'Save',
+    'update' => 'Update',
+    'cancel' => 'Cancel',
     'select_all' => 'Select All',
 
 ];

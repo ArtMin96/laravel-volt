@@ -44,7 +44,11 @@ Route::group(
 
             // Admin user management routes
             Route::get('admins', [AdminController::class, 'index'])->name('admins');
-            Route::get('admins/create', [AdminController::class, 'create'])->name('admins.create');
+
+            Route::prefix('admins/')->name('admins.')->group(function () {
+                Route::get('create', [AdminController::class, 'create'])->name('create');
+                Route::get('edit/{admin}', [AdminController::class, 'edit'])->name('edit');
+            });
 
             // User management routes
             Route::get('users', [UserController::class, 'index'])->name('user');
@@ -52,7 +56,7 @@ Route::group(
             // Role management routes
             Route::get('roles', [RoleController::class, 'index'])->name('roles');
             Route::get('roles/create', [RoleController::class, 'create'])->name('roles.create');
-            Route::get('roles/edit/{id}', [RoleController::class, 'edit'])->name('roles.edit');
+            Route::get('roles/edit/{role}', [RoleController::class, 'edit'])->name('roles.edit');
 
             // Permission management routes
             Route::get('permission', [PermissionController::class, 'index'])->name('permission');

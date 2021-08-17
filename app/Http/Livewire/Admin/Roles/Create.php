@@ -2,17 +2,12 @@
 
 namespace App\Http\Livewire\Admin\Roles;
 
+use App\Http\Livewire\Admin\Component;
 use App\Models\Admin\Permission;
 use App\Models\Admin\Role;
-use App\Traits\Admin\GuardsAgainstAccess;
-use Livewire\Component;
 
 class Create extends Component
 {
-    use GuardsAgainstAccess;
-
-    /** @var string $guard */
-    protected string $guard = 'admin';
 
     /** @var string $name */
     public string $name = '';
@@ -120,6 +115,8 @@ class Create extends Component
 
     public function save()
     {
+        $this->resetErrorBag();
+
         $this->validate();
 
         if (!$this->role) {

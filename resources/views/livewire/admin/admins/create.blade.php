@@ -1,4 +1,4 @@
-<form wire:submit.prevent="updateProfileInformation" method="POST">
+<form wire:submit.prevent="createUser" method="POST">
 
     <x-admin.alert />
 

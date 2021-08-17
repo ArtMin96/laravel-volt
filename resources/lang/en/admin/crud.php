@@ -70,6 +70,15 @@ return [
                 'danger' => 'Cannot update user.'
             ],
         ],
+
+        'update-password' => [
+            'form_title' => 'Update password',
+
+            'messages' => [
+                'success' => 'Password updated successfully.',
+                'danger' => 'Cannot update the password.',
+            ],
+        ]
     ],
 
 ];

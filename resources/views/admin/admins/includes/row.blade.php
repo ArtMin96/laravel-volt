@@ -21,5 +21,17 @@
 </x-livewire-tables::table.cell>
 
 <x-livewire-tables::table.cell>
+    <div>
+        {{ carbon($row->created_at)->diffForHumans() }}
+    </div>
+</x-livewire-tables::table.cell>
+
+<x-livewire-tables::table.cell>
+    <div>
+        {{ carbon($row->updated_at)->diffForHumans() }}
+    </div>
+</x-livewire-tables::table.cell>
+
+<x-livewire-tables::table.cell>
     @includeIf('admin.admins.includes.actions', ['model' => $row])
 </x-livewire-tables::table.cell>

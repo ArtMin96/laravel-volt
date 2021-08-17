@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Livewire\Admin\UserManagement;
+namespace App\Http\Livewire\Admin\Admins;
 
 use App\Models\Admin;
 use Illuminate\Database\Eloquent\Builder;
@@ -50,7 +50,12 @@ class AdminsTable extends DataTableComponent
                 ->sortable(),
             Column::make('Verified', 'email_verified_at')
                 ->sortable(),
-            Column::make('Actions'),
+            Column::make('Created at', 'created_at')
+                ->sortable(),
+            Column::make('Updated at', 'updated_at')
+                ->sortable(),
+            Column::make('Actions')
+                ->excludeFromSelectable(),
         ];
     }
 

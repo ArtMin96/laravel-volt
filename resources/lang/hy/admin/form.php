@@ -29,7 +29,18 @@ return [
         'role' => 'Դեր',
     ],
 
+    'update-password' => [
+        'current_password' => 'Ընթացիկ գաղտնաբառ',
+        'current_password_placeholder' => 'Ընթացիկ գաղտնաբառ',
+        'password' => 'Գաղտնաբառ',
+        'password_placeholder' => 'Գաղտնաբառ',
+        'confirm_password' => 'Հաստատել գաղտնաբառը',
+        'confirm_password_placeholder' => 'Հաստատել գաղտնաբառը',
+    ],
+
     'save' => 'Պահպանել',
+    'update' => 'Թարմացնել',
+    'cancel' => 'Չեղարկել',
     'select_all' => 'Ընտրել բոլորը'
 
 ];

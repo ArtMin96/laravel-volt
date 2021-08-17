@@ -19,10 +19,8 @@ class RoleController extends Controller
         return view('admin.roles.create');
     }
 
-    public function edit($id)
+    public function edit(Role $role)
     {
-        $role = Role::findOrFail($id);
-
         return view('admin.roles.edit', compact('role'));
     }
 }
