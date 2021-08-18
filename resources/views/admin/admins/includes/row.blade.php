@@ -12,13 +12,13 @@
 
 <x-livewire-tables::table.cell>
     <div>
-{{--        {!! $row->roles_label !!}--}}
+        {!! $row->roles_label !!}
     </div>
 </x-livewire-tables::table.cell>
 
 <x-livewire-tables::table.cell>
     <div>
-        {{--        {!! $row->roles_label !!}--}}
+        {!! $row->permissions_label !!}
     </div>
 </x-livewire-tables::table.cell>
 
