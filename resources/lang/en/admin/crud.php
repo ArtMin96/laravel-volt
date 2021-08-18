@@ -15,7 +15,6 @@ return [
         'create_button' => 'New role',
         'edit_role' => 'Edit role',
         'delete_role' => 'Delete role',
-        'back' => 'Back',
 
         'create' => [
             'page_title' => 'Add role',
@@ -43,11 +42,10 @@ return [
 
     'admins' => [
         'page_title' => 'Admins List',
-        'page_caption' => 'Your web analytics dashboard template.',
+        'page_caption' => 'Your administrator users management template.',
         'create_button' => 'New User',
         'edit_role' => 'Edit user',
         'delete_role' => 'Delete user',
-        'back' => 'Back',
 
         'table' => [
             'first_name' => 'First name',
@@ -57,7 +55,7 @@ return [
 
         'create' => [
             'page_title' => 'Add administrator user',
-            'page_caption' => 'Your administrator user creation template.',
+            'page_caption' => 'Your administrator users creation template.',
             'form_title' => 'General information',
 
             'messages' => [
@@ -68,7 +66,7 @@ return [
 
         'edit' => [
             'page_title' => 'Edit administrator user',
-            'page_caption' => 'Your administrator user editing template.',
+            'page_caption' => 'Your administrator users editing template.',
             'form_title' => 'General information',
 
             'messages' => [
@@ -91,6 +89,8 @@ return [
         'created_at' => 'Created at',
         'updated_at' => 'Updated at',
         'actions' => 'Actions',
-    ]
+    ],
+
+    'back' => 'Back',
 
 ];

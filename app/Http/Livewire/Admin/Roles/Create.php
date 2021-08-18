@@ -74,7 +74,7 @@ class Create extends Component
      *
      * @param $value
      */
-    public function permissionsByGuard($value)
+    public function permissionsBySelectedGuard($value)
     {
         if (count($this->getPermissionsByGuard($value))) {
             if ($this->role) {

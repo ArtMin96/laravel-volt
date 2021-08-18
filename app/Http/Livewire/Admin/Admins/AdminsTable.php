@@ -16,10 +16,6 @@ class AdminsTable extends DataTableComponent
         'email_verified_at' => 'Verified',
     ];
 
-    public array $bulkActions = [
-        'exportSelected' => 'Export',
-    ];
-
     protected string $pageName = 'admins';
     protected string $tableName = 'admins';
 

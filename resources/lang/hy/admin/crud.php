@@ -15,7 +15,6 @@ return [
         'create_button' => 'Նոր դեր',
         'edit_role' => 'Խմբագրել դերը',
         'delete_role' => 'Ջնջել դերը',
-        'back' => 'Հետ',
 
         'create' => [
             'page_title' => 'Ավելացնել դեր',
@@ -47,7 +46,6 @@ return [
         'create_button' => 'Նոր օգտատեր',
         'edit_role' => 'Խմբագրել օգտվողին',
         'delete_role' => 'Ջնջել օգտվողին',
-        'back' => 'Back',
 
         'table' => [
             'first_name' => 'Անուն',
@@ -91,6 +89,8 @@ return [
         'created_at' => 'Ստեղծվել է',
         'updated_at' => 'Թարմացվել է ՝',
         'actions' => 'Գործողություններ',
-    ]
+    ],
+
+    'back' => 'Հետ',
 
 ];

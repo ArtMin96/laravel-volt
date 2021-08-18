@@ -18,6 +18,12 @@
 
 <x-livewire-tables::table.cell>
     <div>
+        {{--        {!! $row->roles_label !!}--}}
+    </div>
+</x-livewire-tables::table.cell>
+
+<x-livewire-tables::table.cell>
+    <div>
         {{ carbon($row->created_at)->diffForHumans() }}
     </div>
 </x-livewire-tables::table.cell>

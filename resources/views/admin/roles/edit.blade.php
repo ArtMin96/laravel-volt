@@ -5,7 +5,7 @@
             <x-slot name="toolbar">
                 <a href="{{ route('admin.roles') }}" class="btn btn-sm btn-gray-800 d-inline-flex align-items-center">
                     @svg('heroicon-o-arrow-circle-left', 'icon icon-xs me-2')
-                    {{ __('admin/crud.roles.back') }}
+                    {{ __('admin/crud.back') }}
                 </a>
             </x-slot>
         @endcan
