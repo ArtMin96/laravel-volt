@@ -17,37 +17,32 @@ trait AdminAttribute
     }
 
     /**
-     * @return string
+     * @return array
      */
-    public function getRolesLabelAttribute(): string
+    public function getRolesLabelAttribute(): array
     {
-        if ($this->hasAllRoles(Role::all())) {
-            return 'All';
-        }
-
         if (! $this->roles()->count()) {
-            return 'None';
+            return [];
         }
 
         return collect($this->getRoleNames())
             ->each(function ($role) {
                 return ucwords($role);
-            })
-            ->implode('<br/>');
+            })->all();
     }
 
     /**
-     * @return string
+     * @return array
      */
-    public function getPermissionsLabelAttribute(): string
+    public function getPermissionsLabelAttribute(): array
     {
         if (! $this->getAllPermissions()->count()) {
-            return 'None';
+            return [];
         }
 
         return collect($this->getAllPermissions()->pluck('display_name'))
             ->each(function ($permission) {
                 return ucwords($permission);
-            })->implode('<br/>');
+            })->all();
     }
 }

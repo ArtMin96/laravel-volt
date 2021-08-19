@@ -12,13 +12,33 @@
 
 <x-livewire-tables::table.cell>
     <div>
-        {!! $row->roles_label !!}
+        @php $roleCount = 1; @endphp
+
+        @foreach($row->roles_label as $key => $role)
+            @if($roleCount % 3 == 1)
+                <br>
+            @endif
+
+            <span class="badge rounded-pill bg-primary p-2 px-3 fw-bolder mb-2">{{ $role }}</span>
+
+            @php $roleCount++; @endphp
+        @endforeach
     </div>
 </x-livewire-tables::table.cell>
 
 <x-livewire-tables::table.cell>
     <div>
-        {!! $row->permissions_label !!}
+        @php $permissionCount = 1; @endphp
+
+        @foreach($row->permissions_label as $key => $permission)
+            @if($permissionCount % 3 == 1)
+                <br>
+            @endif
+
+            <span class="badge rounded-pill bg-primary p-2 px-3 fw-bolder mb-2">{{ $permission }}</span>
+            
+            @php $permissionCount++; @endphp
+        @endforeach
     </div>
 </x-livewire-tables::table.cell>
 
