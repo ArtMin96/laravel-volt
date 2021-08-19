@@ -42,6 +42,7 @@ class RolesAndPermissionsSeeder extends Seeder
                 foreach ($group['permissions'] as $permission) {
                     $permission = array_merge(
                         ['group_id' => $permissionGroup->id],
+                        ['default' => true],
                         $permission
                     );
 
@@ -66,7 +67,8 @@ class RolesAndPermissionsSeeder extends Seeder
                 $role = Role::create([
                     'name' => trim($role),
                     'display_name' => $this->buildTranslatedFields($role),
-                    'guard_name' => 'admin'
+                    'guard_name' => 'admin',
+                    'default' => true,
                 ]);
 
                 if($role->name == 'admin') {
@@ -88,7 +90,8 @@ class RolesAndPermissionsSeeder extends Seeder
                 $role = Role::create([
                     'name' => $roleName,
                     'display_name' => $this->buildTranslatedFields(Str::ucfirst(Str::replace('_', ' ', $roleName))),
-                    'guard_name' => 'admin'
+                    'guard_name' => 'admin',
+                    'default' => true,
                 ]);
 
                 if ($roleName == 'admin') {

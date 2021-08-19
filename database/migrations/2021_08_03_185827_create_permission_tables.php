@@ -33,6 +33,7 @@ class CreatePermissionTables extends Migration
             $table->unsignedBigInteger('parent_id')->nullable();
             $table->unsignedBigInteger('group_id')->nullable();
             $table->json('display_name');
+            $table->boolean('default')->default(false);
             $table->timestamps();
 
             $table->unique(['name', 'guard_name']);
@@ -53,6 +54,7 @@ class CreatePermissionTables extends Migration
             $table->string('name');       // For MySQL 8.0 use string('name', 125);
             $table->string('guard_name'); // For MySQL 8.0 use string('guard_name', 125);
             $table->json('display_name');
+            $table->boolean('default')->default(false);
             $table->timestamps();
 
             $table->unique(['name', 'guard_name']);
