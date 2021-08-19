@@ -36,7 +36,7 @@
             @endif
 
             <span class="badge rounded-pill bg-primary p-2 px-3 fw-bolder mb-2">{{ $permission }}</span>
-            
+
             @php $permissionCount++; @endphp
         @endforeach
     </div>
