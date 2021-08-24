@@ -38,6 +38,11 @@ return [
         'confirm_password_placeholder' => 'Հաստատել գաղտնաբառը',
     ],
 
+    'invite-user' => [
+        'email' => 'Էլ. Փոստ',
+        'email_placeholder' => 'Էլ. Փոստ',
+    ],
+
     'save' => 'Պահպանել',
     'update' => 'Թարմացնել',
     'cancel' => 'Չեղարկել',

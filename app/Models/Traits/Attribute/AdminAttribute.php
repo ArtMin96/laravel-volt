@@ -17,6 +17,15 @@ trait AdminAttribute
     }
 
     /**
+     * @return bool
+     * @throws \Exception
+     */
+    public function canCreateOrInviteAdminUser(): bool
+    {
+        return $this->hasAnyPermission(['add_admins', 'invite_admins']);
+    }
+
+    /**
      * @return array
      */
     public function getRolesLabelAttribute(): array

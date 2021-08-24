@@ -67,6 +67,7 @@ class RolesAndPermissionsSeeder extends Seeder
                 $role = Role::create([
                     'name' => trim($role),
                     'display_name' => $this->buildTranslatedFields($role),
+                    'description' => $this->buildTranslatedFields($role),
                     'guard_name' => 'admin',
                     'default' => true,
                 ]);
@@ -90,6 +91,7 @@ class RolesAndPermissionsSeeder extends Seeder
                 $role = Role::create([
                     'name' => $roleName,
                     'display_name' => $this->buildTranslatedFields(Str::ucfirst(Str::replace('_', ' ', $roleName))),
+                    'description' => $this->buildTranslatedFields(Str::ucfirst(Str::replace('_', ' ', $roleName))),
                     'guard_name' => 'admin',
                     'default' => true,
                 ]);

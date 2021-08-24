@@ -46,6 +46,7 @@ return [
         'create_button' => 'New User',
         'edit_role' => 'Edit user',
         'delete_role' => 'Delete user',
+        'invite_with_email' => 'Invite with Email',
 
         'table' => [
             'first_name' => 'First name',
@@ -82,7 +83,20 @@ return [
                 'success' => 'Password updated successfully.',
                 'danger' => 'Cannot update the password.',
             ],
-        ]
+        ],
+
+        'invite-user' => [
+            'page_title' => 'Invite administrator user',
+            'page_caption' => 'Your administrator users invitation template.',
+            'form_title' => 'Please provide the email address of the person you would like to add.',
+            'role_section_title' => 'Role',
+            'invites_title' => 'All of the people that are invited.',
+
+            'messages' => [
+                'success' => 'The Invite has been sent successfully',
+                'danger' => 'Cannot send invitation',
+            ],
+        ],
     ],
 
     'table' => [

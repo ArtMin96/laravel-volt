@@ -39,6 +39,11 @@ return [
         'confirm_password_placeholder' => 'Подтвердите пароль',
     ],
 
+    'invite-user' => [
+        'email' => 'Эл. адрес',
+        'email_placeholder' => 'Эл. адрес',
+    ],
+
     'save' => 'Сохранить',
     'update' => 'Обновлять',
     'cancel' => 'Отмена',

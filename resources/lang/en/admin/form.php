@@ -39,6 +39,11 @@ return [
         'confirm_password_placeholder' => 'Confirm password',
     ],
 
+    'invite-user' => [
+        'email' => 'Email',
+        'email_placeholder' => 'Email',
+    ],
+
     'save' => 'Save',
     'update' => 'Update',
     'cancel' => 'Cancel',

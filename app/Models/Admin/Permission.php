@@ -15,7 +15,9 @@ class Permission extends BasePermission
         PermissionRelationship,
         PermissionScope;
 
-    public array $translatable = ['display_name'];
+    public array $translatable = [
+        'display_name', 'description'
+    ];
 
     /**
      * @return array
@@ -39,11 +41,21 @@ class Permission extends BasePermission
                             'ru' => 'Создать роли',
                             'hy' => 'Ստեղծել դերեր',
                         ],
+                        'description' => [
+                            'en' => 'Create roles',
+                            'ru' => 'Создать роли',
+                            'hy' => 'Ստեղծել դերեր',
+                        ],
                         'guard_name' => 'admin'
                     ],
                     [
                         'name' => 'view_roles',
                         'display_name' => [
+                            'en' => 'View roles',
+                            'ru' => 'Посмотреть роли',
+                            'hy' => 'Դիտել դերերը',
+                        ],
+                        'description' => [
                             'en' => 'View roles',
                             'ru' => 'Посмотреть роли',
                             'hy' => 'Դիտել դերերը',
@@ -57,11 +69,21 @@ class Permission extends BasePermission
                             'ru' => 'Изменить роли',
                             'hy' => 'Խմբագրել դերերը',
                         ],
+                        'description' => [
+                            'en' => 'Edit roles',
+                            'ru' => 'Изменить роли',
+                            'hy' => 'Խմբագրել դերերը',
+                        ],
                         'guard_name' => 'admin'
                     ],
                     [
                         'name' => 'delete_roles',
                         'display_name' => [
+                            'en' => 'Delete roles',
+                            'ru' => 'Удалить роли',
+                            'hy' => 'Ջնջել դերերը',
+                        ],
+                        'description' => [
                             'en' => 'Delete roles',
                             'ru' => 'Удалить роли',
                             'hy' => 'Ջնջել դերերը',
@@ -86,11 +108,21 @@ class Permission extends BasePermission
                             'ru' => 'Создать администратор пользователи',
                             'hy' => 'Ստեղծել ադմինիստրատոր օգտատեր',
                         ],
+                        'description' => [
+                            'en' => 'Create admin users',
+                            'ru' => 'Создать администратор пользователи',
+                            'hy' => 'Ստեղծել ադմինիստրատոր օգտատեր',
+                        ],
                         'guard_name' => 'admin'
                     ],
                     [
                         'name' => 'view_admins',
                         'display_name' => [
+                            'en' => 'View admin users',
+                            'ru' => 'Посмотреть администратор пользователи',
+                            'hy' => 'Դիտել ադմինիստրատոր օգտատերերին',
+                        ],
+                        'description' => [
                             'en' => 'View admin users',
                             'ru' => 'Посмотреть администратор пользователи',
                             'hy' => 'Դիտել ադմինիստրատոր օգտատերերին',
@@ -104,6 +136,11 @@ class Permission extends BasePermission
                             'ru' => 'Изменить администратор пользователи',
                             'hy' => 'Խմբագրել ադմինիստրատոր օգտատերերին',
                         ],
+                        'description' => [
+                            'en' => 'Edit admin users',
+                            'ru' => 'Изменить администратор пользователи',
+                            'hy' => 'Խմբագրել ադմինիստրատոր օգտատերերին',
+                        ],
                         'guard_name' => 'admin'
                     ],
                     [
@@ -112,6 +149,41 @@ class Permission extends BasePermission
                             'en' => 'Delete admin users',
                             'ru' => 'Удалить администратор пользователи',
                             'hy' => 'Ջնջել ադմինիստրատոր օգտատեր',
+                        ],
+                        'description' => [
+                            'en' => 'Delete admin users',
+                            'ru' => 'Удалить администратор пользователи',
+                            'hy' => 'Ջնջել ադմինիստրատոր օգտատեր',
+                        ],
+                        'guard_name' => 'admin'
+                    ],
+
+                    [
+                        'name' => 'invite_admins',
+                        'display_name' => [
+                            'en' => 'Invite admin users',
+                            'ru' => 'Приглашать администратор пользователи',
+                            'hy' => 'Հրավիրել ադմինիստրատոր օգտատեր',
+                        ],
+                        'description' => [
+                            'en' => 'Invite admin users',
+                            'ru' => 'Приглашать администратор пользователи',
+                            'hy' => 'Հրավիրել ադմինիստրատոր օգտատեր',
+                        ],
+                        'guard_name' => 'admin'
+                    ],
+
+                    [
+                        'name' => 'cancel_invite_admins',
+                        'display_name' => [
+                            'en' => 'Cancel admin user invitation',
+                            'ru' => 'Отменить приглашение администратор пользователи',
+                            'hy' => 'Չեղարկել ադմինիստրատոր օգտատերի հրավերը',
+                        ],
+                        'description' => [
+                            'en' => 'Cancel admin user invitation',
+                            'ru' => 'Отменить приглашение администратор пользователи',
+                            'hy' => 'Չեղարկել ադմինիստրատոր օգտատերի հրավերը',
                         ],
                         'guard_name' => 'admin'
                     ],
@@ -133,11 +205,21 @@ class Permission extends BasePermission
                             'ru' => 'Создать пользователи',
                             'hy' => 'Ստեղծել օգտատեր',
                         ],
+                        'description' => [
+                            'en' => 'Create users',
+                            'ru' => 'Создать пользователи',
+                            'hy' => 'Ստեղծել օգտատեր',
+                        ],
                         'guard_name' => 'admin'
                     ],
                     [
                         'name' => 'view_users',
                         'display_name' => [
+                            'en' => 'View users',
+                            'ru' => 'Посмотреть пользователи',
+                            'hy' => 'Դիտել օգտատերերին',
+                        ],
+                        'description' => [
                             'en' => 'View users',
                             'ru' => 'Посмотреть пользователи',
                             'hy' => 'Դիտել օգտատերերին',
@@ -151,11 +233,21 @@ class Permission extends BasePermission
                             'ru' => 'Изменить пользователи',
                             'hy' => 'Խմբագրել օգտատերերին',
                         ],
+                        'description' => [
+                            'en' => 'Edit users',
+                            'ru' => 'Изменить пользователи',
+                            'hy' => 'Խմբագրել օգտատերերին',
+                        ],
                         'guard_name' => 'admin'
                     ],
                     [
                         'name' => 'delete_users',
                         'display_name' => [
+                            'en' => 'Delete users',
+                            'ru' => 'Удалить пользователи',
+                            'hy' => 'Ջնջել օգտատեր',
+                        ],
+                        'description' => [
                             'en' => 'Delete users',
                             'ru' => 'Удалить пользователи',
                             'hy' => 'Ջնջել օգտատեր',
@@ -176,6 +268,11 @@ class Permission extends BasePermission
                     [
                         'name' => 'view_dashboard',
                         'display_name' => [
+                            'en' => 'View dashboard',
+                            'ru' => 'Просмотр панели управления',
+                            'hy' => 'Դիտել վահանակը',
+                        ],
+                        'description' => [
                             'en' => 'View dashboard',
                             'ru' => 'Просмотр панели управления',
                             'hy' => 'Դիտել վահանակը',

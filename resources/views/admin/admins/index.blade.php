@@ -2,7 +2,7 @@
 
     <x-admin.page-heading title="{{ __('admin/crud.admins.page_title') }}" caption="{{ __('admin/crud.admins.page_caption') }}">
 
-        @can('add_admins')
+        @if(admin()->canCreateOrInviteAdminUser())
             <x-slot name="toolbar">
                 <x-admin.dropdown dropdownButtonClasses="btn btn-gray-800 d-inline-flex align-items-center"
                                   contentClasses="dropdown-menu dashboard-dropdown dropdown-menu-start mt-2 py-1">
@@ -18,15 +18,15 @@
                             {{ __('admin/crud.admins.create_button') }}
                         </x-admin.dropdown-item>
 
-                        <x-admin.dropdown-item route="{{ localizeURL(route('admin.admins.create')) }}" class="d-flex align-items-center">
+                        <x-admin.dropdown-item route="{{ localizeURL(route('admin.admins.invitation')) }}" class="d-flex align-items-center">
                             @svg('heroicon-s-mail', 'dropdown-icon text-gray-400 me-2')
-                            Invite With Email
+                            {{ __('admin/crud.admins.invite_with_email') }}
                         </x-admin.dropdown-item>
                         </form>
                     </x-slot>
                 </x-admin.dropdown>
             </x-slot>
-        @endcan
+        @endif
 
     </x-admin.page-heading>
 
