@@ -2,11 +2,19 @@
 
     <x-admin.alert />
 
+    @dd($permissions)
+
     <div class="row">
         <div class="col-md-6 mb-3">
             <div>
                 <label for="name">{{ __('admin/form.roles.role_name') }}</label>
                 <input wire:model.lazy="name" class="form-control " id="name" type="text" placeholder="Enter role name" required="">
+
+                @error('name')
+                    <div class="invalid-feedback">
+                        {{ $message }}
+                    </div>
+                @enderror
             </div>
         </div>
 
@@ -17,6 +25,12 @@
                     <option value="{{ $guard }}">{{ $guard }}</option>
                 @endforeach
             </select>
+
+            @error('guardName')
+                <div class="invalid-feedback">
+                    {{ $message }}
+                </div>
+            @enderror
         </div>
     </div>
     <div class="row">
@@ -28,6 +42,29 @@
                         <textarea wire:model.lazy="inputs.{{ $localeCode }}.display_name" class="form-control " id="display_name_{{ $localeCode }}" placeholder="{{ __('admin/form.roles.role_display_name_placeholder') }}" required="" spellcheck="false"></textarea>
                     </div>
                 </div>
+
+                @error('inputs.'. $localeCode .'.display_name')
+                    <div class="invalid-feedback">
+                        {{ $message }}
+                    </div>
+                @enderror
+            @endforeach
+        @endif
+
+        @if(!empty(getSupportedLocales()))
+            @foreach(getSupportedLocales() as $localeCode => $properties)
+                <div class="col-md-4 mb-3">
+                    <div>
+                        <label for="description_{{ $localeCode }}">{{ __('admin/form.roles.role_description', ['language' => $properties['native']]) }}</label>
+                        <textarea wire:model.lazy="inputs.{{ $localeCode }}.description" class="form-control " id="description_{{ $localeCode }}" placeholder="{{ __('admin/form.roles.role_description_placeholder') }}" required="" spellcheck="false"></textarea>
+                    </div>
+                </div>
+
+                @error('inputs.'. $localeCode .'.description')
+                    <div class="invalid-feedback">
+                        {{ $message }}
+                    </div>
+                @enderror
             @endforeach
         @endif
     </div>
@@ -49,7 +86,7 @@
 
     <div class="row">
         @forelse($permissions as $key => $group)
-            @dd($permissions)
+
 
 {{--            @forelse($group as $permission)--}}
 {{--                <div class="col-md-3">--}}

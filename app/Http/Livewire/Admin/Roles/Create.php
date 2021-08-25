@@ -36,7 +36,8 @@ class Create extends Component
     protected array $rules = [
         'name' => ['required', 'max:255'],
         'guardName' => ['required'],
-        'inputs.*.display_name' => ['required']
+        'inputs.*.display_name' => ['required'],
+        'inputs.*.description' => ['required'],
     ];
 
     public function mount()
@@ -48,6 +49,7 @@ class Create extends Component
 
             foreach (getSupportedLanguagesKeys() as $locale) {
                 $this->inputs[$locale]['display_name'] = $this->role->getTranslations()['display_name'][$locale];
+                $this->inputs[$locale]['description'] = $this->role->getTranslations()['description'][$locale];
             }
         }
 
@@ -103,13 +105,22 @@ class Create extends Component
 
     public function getPermissionsByGuard($guard)
     {
-        return Permission::where('guard_name', $guard)->with('group')->get()->groupBy('group.name');
+        $groupedPermissions = Permission::where('guard_name', $guard)->with('group')->get()->groupBy('group.name');
+
+        $collection = collect($groupedPermissions)->map(function ($permission, $group) {
+            return [$group => $permission];
+        })->collapse()->all();
+
+        return $collection;
+
+
+//        return Permission::where('guard_name', $guard)->with('group')->get()->groupBy('group.name');
     }
 
-    public function buildTranslatedFields(): array
+    public function buildTranslatedFields($column): array
     {
-        return collect(getSupportedLanguagesKeys())->map(function ($localeCode) {
-            return [$localeCode => $this->inputs[$localeCode]['display_name']];
+        return collect(getSupportedLanguagesKeys())->map(function ($localeCode) use ($column) {
+            return [$localeCode => $this->inputs[$localeCode][$column]];
         })->collapse()->all();
     }
 
@@ -123,7 +134,8 @@ class Create extends Component
             if (!isRoleExist($this->name, $this->guardName)) {
                 $role = Role::create([
                     'name' => $this->name,
-                    'display_name' => $this->buildTranslatedFields(),
+                    'display_name' => $this->buildTranslatedFields('display_name'),
+                    'description' => $this->buildTranslatedFields('description'),
                     'guard_name' => $this->guardName
                 ]);
 
@@ -141,7 +153,8 @@ class Create extends Component
 
             $role->update([
                 'name' => $this->name,
-                'display_name' => $this->buildTranslatedFields(),
+                'display_name' => $this->buildTranslatedFields('display_name'),
+                'description' => $this->buildTranslatedFields('description'),
                 'guard_name' => $this->guardName
             ]);
 
