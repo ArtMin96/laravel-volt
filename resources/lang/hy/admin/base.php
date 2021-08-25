@@ -9,9 +9,10 @@ return [
     |
     */
 
-    'sign_out' => 'Sign Out',
-    'logout' => 'Logout',
-    'sign_in' => 'Sign In',
-    'login' => 'Login',
+    'sign_out' => 'Դուրս գալ',
+    'logout' => 'Դուրս գալ',
+    'sign_in' => 'Մուտք գործել',
+    'login' => 'Մուտք',
+    'sign_up' => 'Գրանցվել',
 
 ];

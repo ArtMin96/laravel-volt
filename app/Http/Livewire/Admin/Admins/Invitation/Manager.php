@@ -67,11 +67,12 @@ class Manager extends Component
 
             $this->reset();
 
-            $this->emit('refreshInvitationList');
-
             session()->flash('success', trans('admin/crud.admins.invite-user.messages.success'));
+
+            $this->emit('refreshInvitationList');
         } catch (\Exception $e) {
             DB::rollBack();
+            throw $e;
 
             session()->flash('danger', trans('admin/crud.admins.invite-user.messages.danger'));
         }

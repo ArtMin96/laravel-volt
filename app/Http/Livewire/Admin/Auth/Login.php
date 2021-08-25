@@ -20,11 +20,17 @@ class Login extends Component
     /** @var string  */
     public string $password = '';
 
+    /**
+     * @var array|\string[][]
+     */
     protected array $rules = [
         'email' => ['required', 'email'],
         'password' => ['required'],
     ];
 
+    /**
+     * @return \Illuminate\Http\RedirectResponse|void
+     */
     public function authenticate()
     {
         $this->validate();

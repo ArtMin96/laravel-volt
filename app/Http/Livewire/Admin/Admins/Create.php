@@ -31,8 +31,12 @@ class Create extends Component
     /** @var string $passwordConfirmation */
     public string $passwordConfirmation = '';
 
+    /** @var string $role */
     public string $role = '';
 
+    /**
+     * @return array
+     */
     protected function rules(): array
     {
         return array_merge([
