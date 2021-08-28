@@ -4,10 +4,10 @@ namespace App\Models\Admin;
 
 use App\Models\Traits\Relationship\PermissionRelationship;
 use App\Models\Traits\Scope\PermissionScope;
+use App\Traits\Admin\HasTranslations;
 use Illuminate\Support\Collection;
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 use Spatie\Permission\Models\Permission as BasePermission;
-use Spatie\Translatable\HasTranslations;
 
 class Permission extends BasePermission
 {

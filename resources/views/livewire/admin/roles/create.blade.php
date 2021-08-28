@@ -2,8 +2,6 @@
 
     <x-admin.alert />
 
-    @dd($permissions)
-
     <div class="row">
         <div class="col-md-6 mb-3">
             <div>
@@ -85,22 +83,25 @@
     </div>
 
     <div class="row">
-        @forelse($permissions as $key => $group)
+        @forelse($permissions as $group)
 
+            <div class="col-12 my-3">
+                <h2 class="fs-5 fw-bold mb-1">{{ $group->name }}</h2>
+            </div>
 
-{{--            @forelse($group as $permission)--}}
-{{--                <div class="col-md-3">--}}
-{{--                    <div class="form-check">--}}
-{{--                        <input class="form-check-input" type="checkbox" wire:model="selectedPermissions" value="{{ $permission->id }}"--}}
-{{--                               id="permission-{{ $permission->id }}"--}}
-{{--                                @if($role && $role->permissions->contains($permission)) checked @endif>--}}
-{{--                        <label class="form-check-label" for="permission-{{ $permission->id }}">--}}
-{{--                            {{ $permission->display_name }}--}}
-{{--                        </label>--}}
-{{--                    </div>--}}
-{{--                </div>--}}
-{{--            @empty--}}
-{{--            @endforelse--}}
+            @forelse($group->permissions()->get() as $permission)
+                <div class="col-md-3">
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" wire:model="selectedPermissions" value="{{ $permission->id }}"
+                               id="permission-{{ $permission->id }}"
+                                @if($role && $role->permissions->contains($permission)) checked @endif>
+                        <label class="form-check-label" for="permission-{{ $permission->id }}">
+                            {{ $permission->display_name }}
+                        </label>
+                    </div>
+                </div>
+            @empty
+            @endforelse
         @empty
             <div class="col-12">
                 <h5 class="text-center text-muted">{{ __('admin/form.roles.empty_permissions', ['guard' => $guardName]) }}</h5>

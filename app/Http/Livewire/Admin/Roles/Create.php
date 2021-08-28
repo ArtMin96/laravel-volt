@@ -4,6 +4,7 @@ namespace App\Http\Livewire\Admin\Roles;
 
 use App\Http\Livewire\Admin\Component;
 use App\Models\Admin\Permission;
+use App\Models\Admin\PermissionsGroup;
 use App\Models\Admin\Role;
 
 class Create extends Component
@@ -105,16 +106,7 @@ class Create extends Component
 
     public function getPermissionsByGuard($guard)
     {
-        $groupedPermissions = Permission::where('guard_name', $guard)->with('group')->get()->groupBy('group.name');
-
-        $collection = collect($groupedPermissions)->map(function ($permission, $group) {
-            return [$group => $permission];
-        })->collapse()->all();
-
-        return $collection;
-
-
-//        return Permission::where('guard_name', $guard)->with('group')->get()->groupBy('group.name');
+        return PermissionsGroup::whereHas('permissions', fn($query) => $query->where('guard_name', $guard))->get();
     }
 
     public function buildTranslatedFields($column): array

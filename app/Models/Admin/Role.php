@@ -2,8 +2,8 @@
 
 namespace App\Models\Admin;
 
+use App\Traits\Admin\HasTranslations;
 use Spatie\Permission\Models\Role as BaseRole;
-use Spatie\Translatable\HasTranslations;
 
 class Role extends BaseRole
 {
