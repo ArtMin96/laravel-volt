@@ -1,15 +1,16 @@
 <?php
 
 use App\Models\Admin\Role;
+use Illuminate\Contracts\Auth\Authenticatable;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Str;
 use JetBrains\PhpStorm\Pure;
 
 if (! function_exists('user')) {
     /**
-     * @return \Illuminate\Contracts\Auth\Authenticatable|null
+     * @return Authenticatable|null
      */
-    function user(): ?\Illuminate\Contracts\Auth\Authenticatable
+    function user(): ?Authenticatable
     {
         return auth()->check() ? auth()->user() : null;
     }
@@ -17,9 +18,9 @@ if (! function_exists('user')) {
 
 if (! function_exists('admin')) {
     /**
-     * @return \Illuminate\Contracts\Auth\Authenticatable|null
+     * @return Authenticatable|null
      */
-    function admin(): ?\Illuminate\Contracts\Auth\Authenticatable
+    function admin(): ?Authenticatable
     {
         return auth()->guard('admin')->check() ?
             auth()->guard('admin')->user() :
@@ -41,8 +42,7 @@ if (! function_exists('isRoleExist')) {
 
     function isRoleExist($name, $guard_name = null): bool
     {
-        $role = Role::where('name', $name)->where('guard_name', $guard_name)->first();
-        return collect($role)->count() > 0;
+        return collect(Role::findByName($name, $guard_name))->count() > 0;
     }
 }
 
