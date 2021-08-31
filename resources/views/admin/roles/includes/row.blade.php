@@ -35,5 +35,7 @@
 </x-livewire-tables::table.cell>
 
 <x-livewire-tables::table.cell>
-    @includeIf('admin.roles.includes.actions', ['model' => $row])
+    @if(admin()->hasAnyPermission(['edit_roles', 'delete_roles']))
+        @includeIf('admin.roles.includes.actions', ['model' => $row])
+    @endif
 </x-livewire-tables::table.cell>

@@ -16,6 +16,21 @@ return [
         'edit_role' => 'Խմբագրել դերը',
         'delete_role' => 'Ջնջել դերը',
 
+        'table' => [
+            'name' => 'Անուն',
+            'guard_name' => 'Guard name',
+            'display_name' => 'Ցուցադրվող անունը',
+            'description' => 'Նկարագրություն',
+            'default' => 'Հիմնական',
+            'permissions' => 'Թույլտվություններ',
+            'users_count' => 'Օգտատերերի թիվը',
+
+            'action' => [
+                'edit' => 'Խմբագրել դերը',
+                'delete' => 'Ջնջել դերը',
+            ]
+        ],
+
         'create' => [
             'page_title' => 'Ավելացնել դեր',
             'page_caption' => 'Ձեր դերի ստեղծման ձևանմուշը:',
@@ -46,11 +61,17 @@ return [
         'create_button' => 'Նոր օգտատեր',
         'edit_role' => 'Խմբագրել օգտվողին',
         'delete_role' => 'Ջնջել օգտվողին',
+        'invite_with_email' => 'Էլ. փոստով հրավիրել',
 
         'table' => [
             'first_name' => 'Անուն',
             'last_name' => 'Ազգանուն',
             'email' => 'Էլ․ փոստ',
+
+            'action' => [
+                'edit' => 'Խմբագրել օգտատիրոջը',
+                'delete' => 'Ջնջել օգտատիրոջը',
+            ]
         ],
 
         'create' => [

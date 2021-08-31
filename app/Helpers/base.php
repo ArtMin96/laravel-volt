@@ -21,7 +21,9 @@ if (! function_exists('admin')) {
      */
     function admin(): ?\Illuminate\Contracts\Auth\Authenticatable
     {
-        return auth()->guard('admin')->check() ? auth()->guard('admin')->user() : null;
+        return auth()->guard('admin')->check() ?
+            auth()->guard('admin')->user() :
+            null;
     }
 }
 

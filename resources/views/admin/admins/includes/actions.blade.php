@@ -7,14 +7,18 @@
     </x-slot>
 
     <x-slot name="content">
-        <x-admin.dropdown-item route="{{ localizeURL(route('admin.admins.edit', $row->id)) }}" class="d-flex align-items-center">
-            @svg('heroicon-s-user', 'dropdown-icon me-2')
-            {{ __('admin/crud.admins.table.action.edit') }}
-        </x-admin.dropdown-item>
+        @can('edit_admins')
+            <x-admin.dropdown-item route="{{ localizeURL(route('admin.admins.edit', $row->id)) }}" class="d-flex align-items-center">
+                @svg('heroicon-s-user', 'dropdown-icon me-2')
+                {{ __('admin/crud.admins.table.action.edit') }}
+            </x-admin.dropdown-item>
+        @endcan
 
-        <x-admin.dropdown-item route="{{ localizeURL(route('admin.profile')) }}" class="d-flex align-items-center text-danger rounded-bottom">
-            @svg('heroicon-s-user-remove', 'dropdown-icon me-2')
-            {{ __('admin/crud.admins.table.action.delete') }}
-        </x-admin.dropdown-item>
+        @can('delete_admins')
+            <x-admin.dropdown-item route="{{ localizeURL(route('admin.profile')) }}" class="d-flex align-items-center text-danger rounded-bottom">
+                @svg('heroicon-s-user-remove', 'dropdown-icon me-2')
+                {{ __('admin/crud.admins.table.action.delete') }}
+            </x-admin.dropdown-item>
+        @endcan
     </x-slot>
 </x-admin.dropdown>

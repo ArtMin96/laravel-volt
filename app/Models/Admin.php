@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use App\Models\Traits\Attribute\AdminAttribute;
+use App\Models\Traits\Method\AdminMethod;
 use App\Traits\Admin\HasProfilePhoto;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -18,6 +19,7 @@ class Admin extends Authenticatable
         HasProfilePhoto,
         Notifiable,
         AdminAttribute,
+        AdminMethod,
         SoftDeletes;
 
     /**
@@ -76,4 +78,9 @@ class Admin extends Authenticatable
         'permissions',
         'roles',
     ];
+
+    public function test()
+    {
+        dd($this->permission);
+    }
 }

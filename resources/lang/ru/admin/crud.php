@@ -16,6 +16,21 @@ return [
         'edit_role' => 'Изменить роль',
         'delete_role' => 'Удалить роль',
 
+        'table' => [
+            'name' => 'Имя',
+            'guard_name' => 'Guard name',
+            'display_name' => 'Отображаемое имя',
+            'description' => 'Описание',
+            'default' => 'Дефолт',
+            'permissions' => 'Разрешения',
+            'users_count' => 'Количество пользователей',
+
+            'action' => [
+                'edit' => 'Изменить роль',
+                'delete' => 'Удалить роль',
+            ]
+        ],
+
         'create' => [
             'page_title' => 'Добавить роль',
             'page_caption' => 'Шаблон создания вашей роли.',
@@ -46,11 +61,17 @@ return [
         'create_button' => 'Новый пользователь',
         'edit_role' => 'Редактировать пользователя',
         'delete_role' => 'Удалить пользователя',
+        'invite_with_email' => 'Пригласить по электронной почте',
 
         'table' => [
             'first_name' => 'Имя',
             'last_name' => 'Фамилия',
             'email' => 'Электронная почта',
+
+            'action' => [
+                'edit' => 'Редактировать пользователя',
+                'delete' => 'Удалить пользователя',
+            ]
         ],
 
         'create' => [

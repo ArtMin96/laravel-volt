@@ -8,15 +8,19 @@
         </x-slot>
 
         <x-slot name="content">
-            <x-admin.dropdown-item route="{{ localizeURL(route('admin.roles.edit', $model)) }}" class="d-flex align-items-center">
-                @svg('heroicon-o-pencil', 'dropdown-icon me-2')
-                {{ __('admin/crud.roles.table.action.edit') }}
-            </x-admin.dropdown-item>
+            @can('edit_roles')
+                <x-admin.dropdown-item route="{{ localizeURL(route('admin.roles.edit', $model)) }}" class="d-flex align-items-center">
+                    @svg('heroicon-o-pencil', 'dropdown-icon me-2')
+                    {{ __('admin/crud.roles.table.action.edit') }}
+                </x-admin.dropdown-item>
+            @endcan
 
-            <x-admin.dropdown-item route="{{ localizeURL(route('admin.profile')) }}" class="d-flex align-items-center text-danger rounded-bottom">
-                @svg('heroicon-o-trash', 'dropdown-icon me-2')
-                {{ __('admin/crud.roles.table.action.delete') }}
-            </x-admin.dropdown-item>
+            @can('edit_roles')
+                <x-admin.dropdown-item route="{{ localizeURL(route('admin.profile')) }}" class="d-flex align-items-center text-danger rounded-bottom">
+                    @svg('heroicon-o-trash', 'dropdown-icon me-2')
+                    {{ __('admin/crud.roles.table.action.delete') }}
+                </x-admin.dropdown-item>
+            @endcan
         </x-slot>
     </x-admin.dropdown>
 @endif
