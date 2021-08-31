@@ -16,6 +16,21 @@ return [
         'edit_role' => 'Edit role',
         'delete_role' => 'Delete role',
 
+        'table' => [
+            'name' => 'Name',
+            'guard_name' => 'Guard name',
+            'display_name' => 'Display name',
+            'description' => 'Description',
+            'default' => 'Default',
+            'permissions' => 'Permissions',
+            'users_count' => 'Number of users',
+
+            'action' => [
+                'edit' => 'Edit role',
+                'delete' => 'Delete role',
+            ]
+        ],
+
         'create' => [
             'page_title' => 'Add role',
             'page_caption' => 'Your role creation template.',
@@ -52,6 +67,11 @@ return [
             'first_name' => 'First name',
             'last_name' => 'Last name',
             'email' => 'E-mail',
+
+            'action' => [
+                'edit' => 'Edit user',
+                'delete' => 'Delete user',
+            ]
         ],
 
         'create' => [

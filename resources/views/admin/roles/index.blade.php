@@ -15,4 +15,6 @@
 
     <x-admin.alert />
 
+    <livewire:admin.roles.roles-table />
+
 </x-admin.layouts.app>

@@ -26,7 +26,7 @@
             <a
                 href="#"
                 wire:click.prevent="resetSorts"
-                class="badge rounded-pill bg-light text-dark text-decoration-none"
+                class="badge rounded-pill bg-light text-secondary text-decoration-none"
             >
                 @lang('Clear')
             </a>
