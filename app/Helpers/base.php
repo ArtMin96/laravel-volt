@@ -4,7 +4,10 @@ use App\Models\Admin\Role;
 use Illuminate\Contracts\Auth\Authenticatable;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Str;
-use JetBrains\PhpStorm\Pure;
+
+use Illuminate\Container\Container;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\File;
 
 if (! function_exists('user')) {
     /**
@@ -56,5 +59,46 @@ if (! function_exists('givenPermissions')) {
     function givenPermissions($roleString): array
     {
         return Str::contains($roleString, '|') ? explode('|', $roleString) : [$roleString];
+    }
+}
+
+if (! function_exists('bind')) {
+    /**
+     * @param array $callable
+     * @return Closure
+     */
+    function bind(array $callable): Closure
+    {
+        return function () use ($callable) {
+            call_user_func_array($callable, func_get_args());
+        };
+    }
+}
+
+if (!function_exists('getModels')) {
+    function getModels(): Collection
+    {
+        $models = collect(File::allFiles(app_path()))
+            ->map(function ($item) {
+                $path = $item->getRelativePathName();
+                $class = sprintf('\%s%s',
+                    Container::getInstance()->getNamespace(),
+                    strtr(substr($path, 0, strrpos($path, '.')), '/', '\\'));
+
+                return $class;
+            })
+            ->filter(function ($class) {
+                $valid = false;
+
+                if (class_exists($class)) {
+                    $reflection = new \ReflectionClass($class);
+                    $valid = $reflection->isSubclassOf(Model::class) &&
+                        !$reflection->isAbstract();
+                }
+
+                return $valid;
+            });
+
+        return $models->values();
     }
 }

@@ -10,6 +10,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Laravel\Scout\Searchable;
 use Spatie\Permission\Traits\HasRoles;
 
 class Admin extends Authenticatable
@@ -20,7 +21,15 @@ class Admin extends Authenticatable
         Notifiable,
         AdminAttribute,
         AdminMethod,
-        SoftDeletes;
+        SoftDeletes,
+        Searchable;
+
+    const SEARCHABLE_FIELDS = [
+        'id',
+        'first_name',
+        'last_name',
+        'email',
+    ];
 
     /**
      * The database table used by the model.
@@ -79,8 +88,11 @@ class Admin extends Authenticatable
         'roles',
     ];
 
-    public function test()
+    /**
+     * @return array
+     */
+    public function toSearchableArray(): array
     {
-        dd($this->permission);
+        return $this->only(self::SEARCHABLE_FIELDS);
     }
 }
