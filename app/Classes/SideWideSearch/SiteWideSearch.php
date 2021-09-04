@@ -224,8 +224,6 @@ class SiteWideSearch
             return (new \ReflectionClass(self::class))->getNamespaceName() . '\\Tests\\Models\\';
         }
 
-//        dd(app()->getNamespace());
-
-        return '\\'.app()->getNamespace() . config('site-wide-search.model_path') . '\\';
+        return app()->getNamespace() . config('site-wide-search.model_path') . '\\';
     }
 }

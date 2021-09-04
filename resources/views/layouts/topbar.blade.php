@@ -17,7 +17,7 @@
           </div>
         </form>
 
-          <livewire:site-wide-search />
+          <livewire:admin.site-wide-search />
 
         <a href="https://themesberg.com/product/laravel/volt-admin-dashboard-template" target="_blank"><button
             class="btn mx-1 me-2 btn-secondary" type="button"><i

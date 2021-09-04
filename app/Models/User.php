@@ -6,6 +6,7 @@ use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Laravel\Scout\Searchable;
 
 /**
  * @property integer $id
@@ -21,7 +22,19 @@ use Illuminate\Notifications\Notifiable;
  */
 class User extends Authenticatable
 {
-    use HasFactory, Notifiable;
+    use HasFactory,
+        Notifiable,
+        Searchable;
+
+    /**
+     * Declare the searchable fields.
+     */
+    const SEARCHABLE_FIELDS = [
+        'id',
+        'first_name',
+        'last_name',
+        'email',
+    ];
 
     /**
      * The attributes that are mass assignable.
@@ -53,4 +66,12 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    /**
+     * @return array
+     */
+    public function toSearchableArray(): array
+    {
+        return $this->only(self::SEARCHABLE_FIELDS);
+    }
 }
