@@ -38,8 +38,12 @@ class SiteWideSearch
      */
     public static function filterSearchableModel(?string $classname): bool
     {
-        if (!class_exists($classname)) {
+        if ($classname === null) {
             return false;
+        }
+
+        if (str_contains($classname, '/')) {
+            $classname = Str::replace('/', '\\', $classname);
         }
 
         # Using reflection class to obtain class info dynamically
@@ -52,7 +56,7 @@ class SiteWideSearch
         $searchable = $reflection->hasMethod('search');
 
         # Filter model that has the searchable trait and not in exclude array
-        return class_exists($classname) && $isModel && $searchable && !in_array($reflection->getName(), config('site-wide-search.exclude'), true);
+        return $isModel && $searchable && !in_array($reflection->getName(), config('site-wide-search.exclude'), true);
     }
 
     /**
@@ -220,6 +224,8 @@ class SiteWideSearch
             return (new \ReflectionClass(self::class))->getNamespaceName() . '\\Tests\\Models\\';
         }
 
-        return app()->getNamespace() . config('site-wide-search.model_path') . '\\';
+//        dd(app()->getNamespace());
+
+        return '\\'.app()->getNamespace() . config('site-wide-search.model_path') . '\\';
     }
 }

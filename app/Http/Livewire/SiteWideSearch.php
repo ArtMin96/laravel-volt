@@ -11,7 +11,7 @@ class SiteWideSearch extends Component
     {
 //        dd(getModels());
         $result = \App\Classes\SideWideSearch\SiteWideSearch::search('rafael');
-        dd($result);
+//        dd($result);
     }
 
     public function render()

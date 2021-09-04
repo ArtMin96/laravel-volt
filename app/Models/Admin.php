@@ -24,6 +24,9 @@ class Admin extends Authenticatable
         SoftDeletes,
         Searchable;
 
+    /**
+     * Declare the searchable fields.
+     */
     const SEARCHABLE_FIELDS = [
         'id',
         'first_name',
