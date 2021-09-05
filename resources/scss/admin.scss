@@ -95,3 +95,12 @@
 @import "volt/forms";
 
 // write your custom styles here!
+
+.dropdown-header {
+    text-transform: uppercase;
+    letter-spacing: .03125rem;
+    font-size: 80%;
+    font-weight: 600;
+    padding-top: .5rem;
+    padding-bottom: .5rem;
+}

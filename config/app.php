@@ -176,10 +176,12 @@ return [
         App\Providers\RouteServiceProvider::class,
         App\Providers\HelperServiceProvider::class,
         App\Providers\SiteWideServiceProvider::class,
+        App\Classes\RecentSearches\RecentSearchesServiceProvider::class,
 
         Spatie\Permission\PermissionServiceProvider::class,
         Laravel\Scout\ScoutServiceProvider::class,
         TeamTNT\Scout\TNTSearchScoutServiceProvider::class,
+        Krlove\EloquentModelGenerator\Provider\GeneratorServiceProvider::class,
 
     ],
 

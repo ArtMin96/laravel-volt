@@ -17011,7 +17011,7 @@ readers do not read off random characters that represent icons */
   font-weight: 400;
   font-display: block;
   src: url(/fonts/fa-regular-400.eot?6e629a19381c910f72a6e883d9d0fa7a);
-  src: url(/fonts/fa-regular-400.eot?6e629a19381c910f72a6e883d9d0fa7a) format("embedded-opentype"), url(/fonts/fa-regular-400.woff2?a7d88d25939c72fc08b1e94a410d916a) format("woff2"), url(/fonts/fa-regular-400.woff?d2910d0792778df5a5bdfa51d8e45a66) format("woff"), url(/fonts/fa-regular-400.ttf?4c827f8aaa6048d02865d52490034117) format("truetype"), url(/fonts/fa-regular-400.svg?27ef1970a4ef0787fdc291aa4385bf6f) format("svg");
+  src: url(/fonts/fa-regular-400.eot?6e629a19381c910f72a6e883d9d0fa7a) format("embedded-opentype"), url(/fonts/fa-regular-400.woff2?a7d88d25939c72fc08b1e94a410d916a) format("woff2"), url(/fonts/fa-regular-400.woff?d2910d0792778df5a5bdfa51d8e45a66) format("woff"), url(/fonts/fa-regular-400.ttf?4c827f8aaa6048d02865d52490034117) format("truetype"), url(/fonts/fa-regular-400.svg?7c2a85a1d662769b37d4136c7bd399a9) format("svg");
 }
 .far {
   font-family: "Font Awesome 5 Pro";
@@ -17028,7 +17028,7 @@ readers do not read off random characters that represent icons */
   font-weight: 900;
   font-display: block;
   src: url(/fonts/fa-solid-900.eot?52e50a473ce5a810b96c41bfe732beb7);
-  src: url(/fonts/fa-solid-900.eot?52e50a473ce5a810b96c41bfe732beb7) format("embedded-opentype"), url(/fonts/fa-solid-900.woff2?eb1e9adc85b4ee46fadd063748a4eb00) format("woff2"), url(/fonts/fa-solid-900.woff?d01c913b964766c49d6f7e60668881e2) format("woff"), url(/fonts/fa-solid-900.ttf?e3dd595576a3022bd3e423542d5b4e0e) format("truetype"), url(/fonts/fa-solid-900.svg?0b3a54080a347a20a34990004e2254ac) format("svg");
+  src: url(/fonts/fa-solid-900.eot?52e50a473ce5a810b96c41bfe732beb7) format("embedded-opentype"), url(/fonts/fa-solid-900.woff2?eb1e9adc85b4ee46fadd063748a4eb00) format("woff2"), url(/fonts/fa-solid-900.woff?d01c913b964766c49d6f7e60668881e2) format("woff"), url(/fonts/fa-solid-900.ttf?e3dd595576a3022bd3e423542d5b4e0e) format("truetype"), url(/fonts/fa-solid-900.svg?11846d3ecd3df1cc6f8d1c61591cb11a) format("svg");
 }
 .fa,
 .fas {
@@ -43969,4 +43969,13 @@ article .h1, article .h2, article .h3, article .h4, article .h5, article .h6 {
 
 .datepicker-dropdown {
   z-index: 9999;
+}
+
+.dropdown-header {
+  text-transform: uppercase;
+  letter-spacing: 0.03125rem;
+  font-size: 80%;
+  font-weight: 600;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
 }

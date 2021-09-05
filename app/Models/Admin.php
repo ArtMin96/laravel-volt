@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Classes\RecentSearches\Traits\HasRecentSearches;
 use App\Models\Traits\Attribute\AdminAttribute;
 use App\Models\Traits\Method\AdminMethod;
 use App\Traits\Admin\HasProfilePhoto;
@@ -22,7 +23,8 @@ class Admin extends Authenticatable
         AdminAttribute,
         AdminMethod,
         SoftDeletes,
-        Searchable;
+        Searchable,
+        HasRecentSearches;
 
     /**
      * Declare the searchable fields.

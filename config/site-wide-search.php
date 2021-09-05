@@ -23,7 +23,7 @@ return [
     ],
 
     // the number of neighbouring characters that you want to include in the match field of API response
-    'buffer' => 10,
+    'buffer' => 15,
 
     // this is where you define where should the search result leads to.
     // the link should navigate to the resource view page
@@ -31,5 +31,6 @@ return [
     // We will replace `{id}` or `{ id }` with the model id
     'view_mapping' => [
         // \App\Models\Comment::class => '/comments/view/{id}'
+        \App\Models\Admin::class => '/admin/admins/edit/{id}'
     ],
 ];
