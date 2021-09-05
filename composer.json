@@ -6,6 +6,7 @@
     "license": "MIT",
     "require": {
         "php": "^7.3|^8.0",
+        "binarytorch/larecipe": "^2.4",
         "blade-ui-kit/blade-icons": "^1.1",
         "blade-ui-kit/blade-ui-kit": "^0.3.1",
         "fideloper/proxy": "^4.4",

@@ -135,6 +135,10 @@
       <excludeFolder url="file://$MODULE_DIR$/vendor/doctrine/deprecations" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/krlove/eloquent-model-generator" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/krlove/code-generator" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/binarytorch/larecipe" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/erusev/parsedown-extra" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/erusev/parsedown" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/symfony/dom-crawler" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
