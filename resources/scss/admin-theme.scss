@@ -1,0 +1,31 @@
+.dropdown-header {
+    text-transform: uppercase;
+    letter-spacing: .03125rem;
+    font-size: 80%;
+    font-weight: 600;
+    padding-top: .5rem;
+    padding-bottom: .5rem;
+}
+
+.scrolling-wrapper {
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+
+    .scrolling-wrapper-item {
+        flex: 0 0 auto;
+    }
+
+    .scrolling-wrapper-item {
+        margin: 0 10px;
+    }
+
+    .scrolling-wrapper-item:first-of-type {
+        margin-left: 0;
+    }
+
+    .scrolling-wrapper-item:last-of-type {
+        margin-right: 0;
+    }
+}

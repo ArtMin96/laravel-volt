@@ -74,3 +74,27 @@ if (! function_exists('bind')) {
         };
     }
 }
+
+if (! function_exists('isOfValidClass')) {
+    /**
+     * Multiple instanceof checks.
+     *
+     * @param $class
+     * @param array $classNames
+     * @return bool
+     */
+    function isOfValidClass($class, array $classNames): bool
+    {
+        if (empty($classNames)) {
+            return false;
+        }
+
+        foreach ($classNames as $className) {
+            if (is_a($class, $className)) {
+                return true;
+            }
+
+            return false;
+        }
+    }
+}

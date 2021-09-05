@@ -15,6 +15,11 @@ trait HasRecentSearches
         return $this->morphMany(RecentSearchesServiceProvider::determineActivityModel(), 'subject');
     }
 
+    public function recentSearchesByUser(): MorphMany
+    {
+        return $this->morphMany(RecentSearchesServiceProvider::determineActivityModel(), 'user');
+    }
+
     protected static function getRelatedModelAttributeValue(Model $model, string $attribute): array
     {
         $relatedModelNames = explode('.', $attribute);

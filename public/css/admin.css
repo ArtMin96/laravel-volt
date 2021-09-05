@@ -43979,3 +43979,22 @@ article .h1, article .h2, article .h3, article .h4, article .h5, article .h6 {
   padding-top: 0.5rem;
   padding-bottom: 0.5rem;
 }
+
+.scrolling-wrapper {
+  display: flex;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+.scrolling-wrapper .scrolling-wrapper-item {
+  flex: 0 0 auto;
+}
+.scrolling-wrapper .scrolling-wrapper-item {
+  margin: 0 10px;
+}
+.scrolling-wrapper .scrolling-wrapper-item:first-of-type {
+  margin-left: 0;
+}
+.scrolling-wrapper .scrolling-wrapper-item:last-of-type {
+  margin-right: 0;
+}

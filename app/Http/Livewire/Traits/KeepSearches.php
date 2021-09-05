@@ -13,10 +13,10 @@ trait KeepSearches
 
         if ($modelName !== null) {
             $model = app("App\\Models\\".$modelName)::find($this->item->id);
-            $storeSearch->on($model);
+            $storeSearch->performedOn($model);
         }
 
-        $storeSearch->by(admin())
+        $storeSearch->byUser(admin())
             ->rememberSearch($keyword);
     }
 }

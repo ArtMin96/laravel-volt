@@ -16,6 +16,9 @@ class SiteWideSearch extends Component
     /** @var array $result */
     public $result = [];
 
+    /** @var array $recentSearches */
+    public $recentSearches = [];
+
     public function mount()
     {
         $this->reset();
@@ -24,6 +27,11 @@ class SiteWideSearch extends Component
     public function updatedKeyword()
     {
         $this->result = Search::search($this->keyword);
+    }
+
+    public function updatedShowRecentSearches()
+    {
+        $this->recentSearches = $this->showRecentSearches ? admin()->recentSearchesByUser()->latest()->take(4)->get() : collect();
     }
 
     public function render()

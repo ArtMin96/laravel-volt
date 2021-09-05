@@ -12,8 +12,8 @@
         <input type="text"
                class="form-control"
                id="topbarInputIconLeft"
-               placeholder="Search"
-               aria-label="Search"
+               placeholder="{{ __('admin/navbar.search') }}"
+               aria-label="{{ __('admin/navbar.search') }}"
                aria-describedby="topbar-addon"
                autocomplete="off"
                wire:model="keyword"
@@ -28,19 +28,22 @@
 
             <div class="card notification-card border-0 shadow">
                 <div class="mt-3 pb-2 @if(!empty($keyword)) border-bottom @endif">
-                    <small class="dropdown-header mb-n2 text-muted fw-500">Recent searches</small>
+                    <small class="dropdown-header mb-n2 text-muted fw-500">{{ __('admin/navbar.recent_searches') }}</small>
 
-                    <div class="dropdown-item bg-transparent text-wrap my-2">
-                        <span class="h4 mr-2">
-                            <a class="btn btn-gray-300 btn-sm rounded-pill" href="./index.html">
-                                <small>Gulp</small> @svg('heroicon-o-search', 'icon icon-xs ml-1', ['width' => '15'])
-                            </a>
-                        </span>
-                        <span class="h4">
-                            <a class="btn btn-gray-300 btn-sm rounded-pill" href="./index.html">
-                                <small>Notification panel</small> @svg('heroicon-o-search', 'icon icon-xs ml-1', ['width' => '15'])
-                            </a>
-                        </span>
+                    <div class="dropdown-item bg-transparent text-wrap my-2 scrolling-wrapper">
+
+                        @forelse($recentSearches as $searchedItem)
+                            @php
+                                $randomKey = time().$loop->index;
+                            @endphp
+
+                            <livewire:admin.recent-searches :searchedItem="$searchedItem" :key="$randomKey" />
+                        @empty
+                            <span class="scrolling-wrapper-item">
+                                <small>{{ __('admin/navbar.empty_recent_searches') }}</small>
+                            </span>
+                        @endforelse
+
                     </div>
                 </div>
 
