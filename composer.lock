@@ -3201,16 +3201,16 @@
         },
         {
             "name": "rappasoft/laravel-livewire-tables",
-            "version": "v1.13.0",
+            "version": "v1.14.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/rappasoft/laravel-livewire-tables.git",
-                "reference": "ffd23f4c16441685da1df8e41cbbd90ed5692ed1"
+                "reference": "14c0725bdb1309201fd32572f399cd15a85a4013"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/rappasoft/laravel-livewire-tables/zipball/ffd23f4c16441685da1df8e41cbbd90ed5692ed1",
-                "reference": "ffd23f4c16441685da1df8e41cbbd90ed5692ed1",
+                "url": "https://api.github.com/repos/rappasoft/laravel-livewire-tables/zipball/14c0725bdb1309201fd32572f399cd15a85a4013",
+                "reference": "14c0725bdb1309201fd32572f399cd15a85a4013",
                 "shasum": ""
             },
             "require": {
@@ -3261,7 +3261,7 @@
             ],
             "support": {
                 "issues": "https://github.com/rappasoft/laravel-livewire-tables/issues",
-                "source": "https://github.com/rappasoft/laravel-livewire-tables/tree/v1.13.0"
+                "source": "https://github.com/rappasoft/laravel-livewire-tables/tree/v1.14.0"
             },
             "funding": [
                 {
@@ -3269,7 +3269,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2021-08-25T01:59:51+00:00"
+            "time": "2021-09-05T04:54:32+00:00"
         },
         {
             "name": "spatie/laravel-package-tools",
