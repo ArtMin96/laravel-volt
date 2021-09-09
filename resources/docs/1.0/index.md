@@ -5,3 +5,4 @@
     - [Components](/{{route}}/{{version}}/livewire-components)
 - ## Usage Examples
     - [Full Site Search](/{{route}}/{{version}}/full-site-search)
+    - [Repository Pattern](/{{route}}/{{version}}/repository)

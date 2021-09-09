@@ -108,6 +108,31 @@ class RolesAndPermissionsSeeder extends Seeder
             $this->command->info('Added only default admin, manager, system_administrator role.');
         }
 
+        $superAdminRole = Role::create([
+            'name' => 'super_admin',
+            'display_name' => [
+                'en' => 'Super admin',
+                'ru' => 'Супер админ',
+                'hy' => 'Սուպեր ադմինիստրատոր',
+            ],
+            'description' => [
+                'en' => 'Administrators with this role have access to everything in ' . config('app.name') . '. They can manage roles and role assignments. Also, they can create, edit, assign and delete custom roles.',
+                'ru' => 'Администраторы с этой ролью имеют доступ ко всему на ' . config('app.name') . '. Они могут управлять ролями и назначениями ролей. Кроме того, они могут создавать, редактировать, назначать и удалять собственные роли.',
+                'hy' => 'Այս դերն ունեցող ադմինիստրատորներին հասանելի է ամեն ինչ ' . config('app.name') . '-ում: Նրանք կարող են կառավարել դերեր և դերերի հանձնարարություններ: Բացի այդ, նրանք կարող են ստեղծել, խմբագրել, նշանակել և ջնջել հատուկ դերեր:',
+            ],
+            'guard_name' => 'admin',
+            'default' => true,
+        ]);
+
+        $superAdminRole->syncPermissions(Permission::all());
+        $this->command->info('Super Admin granted all the permissions');
+
+        $superAdmin = Admin::first();
+
+        $superAdmin->assignRole($superAdminRole->name);
+
+        $this->command->info($superAdmin->email . ' assigned to the role of Super admin');
+
         $this->command->warn('All done :)');
     }
 

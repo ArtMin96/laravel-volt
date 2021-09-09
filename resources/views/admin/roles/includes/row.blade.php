@@ -7,7 +7,7 @@
 </x-livewire-tables::table.cell>
 
 <x-livewire-tables::table.cell>
-    {{ $row->description }}
+    {{ \Illuminate\Support\Str::limit($row->description, 40) }}
 </x-livewire-tables::table.cell>
 
 <x-livewire-tables::table.cell>
